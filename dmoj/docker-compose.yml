@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   db:
-    container_name: dmoj_mysql
+    container_name: dmoj-mysql
     image: mariadb
     restart: always
     volumes:
@@ -9,7 +9,7 @@ services:
     env_file: [environment/mysql.env, environment/mysql-admin.env]
     networks: [db]
   redis:
-    container_name: dmoj_redis
+    container_name: dmoj-redis
     image: redis:alpine
     restart: always
     networks: [site]
@@ -111,7 +111,7 @@ services:
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, nginx]
   nginx:
-    container_name: dmoj_nginx
+    container_name: dmoj-nginx
     image: nginx:alpine
     restart: always
     ports:

@@ -7,4 +7,4 @@ EXPOSE 15100
 EXPOSE 15101
 EXPOSE 15102
 
-ENTRYPOINT node /app/site/websocket/daemon.js
+ENTRYPOINT exec node /app/site/websocket/daemon.js

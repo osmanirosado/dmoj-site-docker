@@ -1,8 +1,10 @@
-FROM node:10.21.0
+FROM node:22
 
-RUN npm install mathoid && \
-    ln -sfv /node_modules/mathoid/app.js /node_modules/app.js
+WORKDIR /home/node
+
+RUN npm install mathoid
 
 EXPOSE 10044
-WORKDIR /node_modules/mathoid
-CMD /node_modules/mathoid/server.js
+
+WORKDIR /home/node/node_modules/mathoid
+CMD /home/node/node_modules/mathoid/server.js

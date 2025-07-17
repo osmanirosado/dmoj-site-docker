@@ -38,7 +38,7 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - ./mathoid/config.yaml:/node_modules/mathoid/config.yaml
+      - ./mathoid/config.yaml:/home/node/node_modules/mathoid/config.yaml
     networks: [site]
   base:
     build:

@@ -21,6 +21,7 @@ RUN git clone https://github.com/DMOJ/pdfoid.git pdfoid
 WORKDIR /pdfoid/
 RUN pip3 install -e .
 
+ENV CHROME_PATH=/usr/bin/google-chrome
 ENV CHROMEDRIVER_PATH=/usr/bin/chromedriver
 ENV EXIFTOOL_PATH=/usr/bin/exiftool
 

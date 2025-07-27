@@ -8,7 +8,7 @@ RUN apt-get update && \
     sed -i 's/^Components: main$/& contrib non-free/' /etc/apt/sources.list.d/debian.sources && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
-        google-chrome-stable fonts-noto ttf-mscorefonts-installer && \
+        google-chrome-stable fonts-noto && \
     rm -rf /var/lib/apt/lists/* && \
     wget https://chromedriver.storage.googleapis.com/$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip && \
     unzip chromedriver_linux64.zip && \

@@ -1,4 +1,4 @@
-FROM bash:5.3 as temporal
+FROM bash:5.3 AS temporal
 
 WORKDIR /home
 
@@ -21,4 +21,4 @@ WORKDIR /home/texoid
 RUN pip3 install -e .
 
 EXPOSE 8888
-ENTRYPOINT exec texoid --address=texoid --port=8888
+CMD python texoid --address=texoid --port=8888

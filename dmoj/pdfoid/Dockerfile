@@ -17,7 +17,7 @@ RUN unzip chrome-headless-shell-linux64.zip && mv chrome-headless-shell-linux64 
 RUN wget https://"$STORAGE_GOOGLE_APIS"/chrome-for-testing-public/"$CHROME_RELEASE"/linux64/chromedriver-linux64.zip
 RUN unzip chromedriver-linux64.zip && mv chromedriver-linux64 chromedriver
 
-FROM python:3.11
+FROM python:3.11-slim
 
 # chrome
 COPY --from=temporal /home/chrome-headless-shell/ /opt/chrome-headless-shell/
@@ -36,11 +36,11 @@ rm -rf /var/lib/apt/lists/*
 
 EOF
 
-# exiftool
+# exiftool and git dependencies
 RUN bash <<'EOF'
 
 apt-get update
-apt-get install -y --no-install-recommends libimage-exiftool-perl
+apt-get install -y --no-install-recommends libimage-exiftool-perl git
 
 rm -rf /var/lib/apt/lists/*
 

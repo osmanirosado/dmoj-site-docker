@@ -17,6 +17,10 @@ RUN unzip chrome-headless-shell-linux64.zip && mv chrome-headless-shell-linux64 
 RUN wget https://"$STORAGE_GOOGLE_APIS"/chrome-for-testing-public/"$CHROME_RELEASE"/linux64/chromedriver-linux64.zip
 RUN unzip chromedriver-linux64.zip && mv chromedriver-linux64 chromedriver
 
+# pdfoid
+RUN wget https://github.com/DMOJ/pdfoid/archive/refs/heads/master.zip
+RUN unzip master.zip && mv pdfoid-master pdfoid
+
 FROM python:3.11-slim
 
 # chrome
@@ -40,7 +44,7 @@ EOF
 RUN bash <<'EOF'
 
 apt-get update
-apt-get install -y --no-install-recommends libimage-exiftool-perl git
+apt-get install -y --no-install-recommends libimage-exiftool-perl
 
 rm -rf /var/lib/apt/lists/*
 
@@ -48,7 +52,7 @@ EOF
 
 WORKDIR /home
 
-RUN git clone https://github.com/DMOJ/pdfoid.git
+COPY --from=temporal /home/pdfoid/ /home/pdfoid/
 
 WORKDIR /home/pdfoid
 

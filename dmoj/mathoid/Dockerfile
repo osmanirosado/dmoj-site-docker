@@ -4,7 +4,7 @@ WORKDIR /home/node
 
 RUN npm install mathoid@0.7.6
 
-COPY mathoid/config.yaml /home/node/node_modules/mathoid/
+COPY config.yaml /home/node/node_modules/mathoid/
 
 EXPOSE 10044
 

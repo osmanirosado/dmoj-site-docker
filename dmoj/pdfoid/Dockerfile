@@ -1,30 +1,66 @@
-FROM python:3.11-slim
+FROM bash:5.3 as temporal
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        curl gnupg git unzip xvfb libxi6 libgconf-2-4 exiftool && \
-    curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add && \
-    echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list && \
-    sed -i 's/^Components: main$/& contrib non-free/' /etc/apt/sources.list.d/debian.sources && \
-    apt-get update && \
-    apt-get install -y --no-install-recommends \
-        google-chrome-stable fonts-noto ttf-mscorefonts-installer && \
-    rm -rf /var/lib/apt/lists/* && \
-    wget https://chromedriver.storage.googleapis.com/$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip && \
-    unzip chromedriver_linux64.zip && \
-    mv chromedriver /usr/bin/chromedriver && \
-    chmod +x /usr/bin/chromedriver && \
-    rm chromedriver_linux64.zip && \
-    useradd -m pdfoid
+ARG STORAGE_GOOGLE_APIS=nexus.uclv.edu.cu/repository/storage.googleapis.com
+ARG CHROME_RELEASE=138.0.7204.168
 
-RUN git clone https://github.com/DMOJ/pdfoid.git pdfoid
-WORKDIR /pdfoid/
+WORKDIR /home
+
+# chrome
+RUN wget https://"$STORAGE_GOOGLE_APIS"/chrome-for-testing-public/"$CHROME_RELEASE"/linux64/chrome-linux64.zip
+RUN unzip chrome-linux64.zip && mv chrome-linux64 chrome
+
+# chrome headlees shell
+RUN wget https://"$STORAGE_GOOGLE_APIS"/chrome-for-testing-public/"$CHROME_RELEASE"/linux64/chrome-headless-shell-linux64.zip
+RUN unzip chrome-headless-shell-linux64.zip && mv chrome-headless-shell-linux64 chrome-headless-shell
+
+# chrome driver
+RUN wget https://"$STORAGE_GOOGLE_APIS"/chrome-for-testing-public/"$CHROME_RELEASE"/linux64/chromedriver-linux64.zip
+RUN unzip chromedriver-linux64.zip && mv chromedriver-linux64 chromedriver
+
+FROM python:3.11
+
+WORKDIR /home
+
+RUN git clone https://github.com/DMOJ/pdfoid.git
+
+WORKDIR /home/pdfoid
+
 RUN pip3 install -e .
 
-ENV CHROME_PATH=/usr/bin/google-chrome
-ENV CHROMEDRIVER_PATH=/usr/bin/chromedriver
+# exiftool
+RUN bash <<'EOF'
+
+apt-get update
+apt-get install -y --no-install-recommends libimage-exiftool-perl
+
+rm -rf /var/lib/apt/lists/*
+
+EOF
+
+# chrome
+COPY --from=temporal /home/chrome-headless-shell/ /opt/chrome-headless-shell/
+COPY --from=temporal /home/chromedriver/ /opt/chromedriver/
+
+RUN bash <<'EOF'
+
+apt-get update
+
+while read pkg; do
+  apt-get satisfy -y --no-install-recommends "${pkg}";
+done < /opt/chrome-headless-shell/deb.deps;
+
+rm -rf /var/lib/apt/lists/*
+
+EOF
+
+ENV CHROME_PATH=/opt/chrome/chrome
+ENV CHROMEDRIVER_PATH=/opt/chromedriver/chromedriver
 ENV EXIFTOOL_PATH=/usr/bin/exiftool
 
-EXPOSE 8888
+RUN useradd pdfoid
+
 USER pdfoid
-ENTRYPOINT exec pdfoid --address=pdfoid --port=8888
+
+EXPOSE 8888
+
+CMD python pdfoid --address=pdfoid --port=8888

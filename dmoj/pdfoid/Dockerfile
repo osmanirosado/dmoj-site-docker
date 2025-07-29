@@ -32,14 +32,8 @@ COPY chrome-deps-install.sh /home/
 RUN bash /home/chrome-deps-install.sh
 
 # exiftool and git dependencies
-RUN bash <<'EOF'
-
-apt-get update
-apt-get install -y --no-install-recommends libimage-exiftool-perl
-
-rm -rf /var/lib/apt/lists/*
-
-EOF
+COPY deps-install.sh /home/
+RUN bash /home/deps-install.sh
 
 WORKDIR /home
 

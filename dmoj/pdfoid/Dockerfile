@@ -24,7 +24,7 @@ RUN unzip master.zip && mv pdfoid-master pdfoid
 FROM python:3.11-slim
 
 # chrome
-COPY --from=temporal /home/chrome-headless-shell/ /opt/chrome-headless-shell/
+COPY --from=temporal /home/chrome/ /opt/chrome/
 COPY --from=temporal /home/chromedriver/ /opt/chromedriver/
 
 # chrome dependencies

@@ -28,17 +28,8 @@ COPY --from=temporal /home/chrome-headless-shell/ /opt/chrome-headless-shell/
 COPY --from=temporal /home/chromedriver/ /opt/chromedriver/
 
 # chrome dependencies
-RUN bash <<'EOF'
-
-apt-get update
-
-while read pkg; do
-  apt-get satisfy -y --no-install-recommends "${pkg}";
-done < /opt/chrome-headless-shell/deb.deps;
-
-rm -rf /var/lib/apt/lists/*
-
-EOF
+COPY chrome-deps-install.sh /home/
+RUN bash /home/chrome-deps-install.sh
 
 # exiftool and git dependencies
 RUN bash <<'EOF'

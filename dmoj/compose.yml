@@ -22,8 +22,8 @@ services:
     networks: [site]
   pdfoid:
     build:
-      context: .
-      dockerfile: ./pdfoid/Dockerfile
+      context: pdfoid
+      dockerfile: Dockerfile
     image: ninjaclasher/dmoj-pdfoid
     init: true
     restart: unless-stopped

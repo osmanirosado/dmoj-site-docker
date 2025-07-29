@@ -1,3 +1,3 @@
 FROM ninjaclasher/dmoj-base:latest
 
-ENTRYPOINT exec celery -A dmoj_celery worker -l info --concurrency=2
+CMD celery -A dmoj_celery worker -l info --concurrency=2

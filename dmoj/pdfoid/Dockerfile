@@ -19,28 +19,11 @@ RUN unzip chromedriver-linux64.zip && mv chromedriver-linux64 chromedriver
 
 FROM python:3.11
 
-WORKDIR /home
-
-RUN git clone https://github.com/DMOJ/pdfoid.git
-
-WORKDIR /home/pdfoid
-
-RUN pip3 install -e .
-
-# exiftool
-RUN bash <<'EOF'
-
-apt-get update
-apt-get install -y --no-install-recommends libimage-exiftool-perl
-
-rm -rf /var/lib/apt/lists/*
-
-EOF
-
 # chrome
 COPY --from=temporal /home/chrome-headless-shell/ /opt/chrome-headless-shell/
 COPY --from=temporal /home/chromedriver/ /opt/chromedriver/
 
+# chrome dependencies
 RUN bash <<'EOF'
 
 apt-get update
@@ -53,14 +36,32 @@ rm -rf /var/lib/apt/lists/*
 
 EOF
 
-ENV CHROME_PATH=/opt/chrome/chrome
-ENV CHROMEDRIVER_PATH=/opt/chromedriver/chromedriver
-ENV EXIFTOOL_PATH=/usr/bin/exiftool
+# exiftool
+RUN bash <<'EOF'
+
+apt-get update
+apt-get install -y --no-install-recommends libimage-exiftool-perl
+
+rm -rf /var/lib/apt/lists/*
+
+EOF
+
+WORKDIR /home
+
+RUN git clone https://github.com/DMOJ/pdfoid.git
+
+WORKDIR /home/pdfoid
+
+RUN pip3 install -e .
 
 RUN useradd pdfoid
 
 USER pdfoid
 
 EXPOSE 8888
+
+ENV CHROME_PATH=/opt/chrome/chrome
+ENV CHROMEDRIVER_PATH=/opt/chromedriver/chromedriver
+ENV EXIFTOOL_PATH=/usr/bin/exiftool
 
 CMD python pdfoid --address=pdfoid --port=8888

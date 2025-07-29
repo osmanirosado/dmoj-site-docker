@@ -47,10 +47,9 @@ RUN useradd pdfoid
 
 USER pdfoid
 
-EXPOSE 8888
-
 ENV CHROME_PATH=/opt/chrome/chrome
 ENV CHROMEDRIVER_PATH=/opt/chromedriver/chromedriver
 ENV EXIFTOOL_PATH=/usr/bin/exiftool
 
+EXPOSE 8888
 CMD python pdfoid --address=pdfoid --port=8888

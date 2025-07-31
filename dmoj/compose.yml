@@ -49,7 +49,7 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - assets:/assets/
+      - assets:/mnt/assets/
       - pdf_cache:/mnt/pdf_cache
       - data_cache:/mnt/data_cache
       - cache:/mnt/cache/

@@ -120,7 +120,7 @@ SERVER_EMAIL = 'DMOJ: Modern Online Judge <errors@dmoj.ca>'
 # webserver to serve the static files. This is the directory where all the 
 # static files DMOJ uses will be collected to.
 # You must configure your webserver to serve this directory as /static/ in production.
-STATIC_ROOT = '/assets/static/'
+STATIC_ROOT = '/mnt/assets/static/'
 
 # URL to access static files.
 STATIC_URL = '/static/'
@@ -300,7 +300,7 @@ CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 
 DMOJ_PROBLEM_DATA_ROOT = '/mnt/problems/'
 
-DMOJ_RESOURCES = '/assets/resources/'
+DMOJ_RESOURCES = '/mnt/assets/resources/'
 
 MEDIA_ROOT = '/mnt/media/'
 MEDIA_URL = '/media/'

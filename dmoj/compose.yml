@@ -51,7 +51,7 @@ services:
     volumes:
       - assets:/assets/
       - pdf_cache:/pdfcache/
-      - datacache:/datacache/
+      - data_cache:/datacache/
       - cache:/cache/
       - ./data/media/:/media/
       - ./data/problems/:/problems/
@@ -68,7 +68,7 @@ services:
     restart: unless-stopped
     volumes:
       - pdf_cache:/pdfcache/
-      - datacache:/datacache/
+      - data_cache:/datacache/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, db]
     depends_on: [db, redis]
@@ -106,7 +106,7 @@ services:
     volumes:
       - assets:/assets/
       - pdf_cache:/pdfcache/
-      - datacache:/datacache/
+      - data_cache:/datacache/
       - cache:/cache/
       - ./data/media/:/media/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
@@ -121,5 +121,5 @@ networks:
 volumes:
   assets:
   pdf_cache:
-  datacache:
+  data_cache:
   cache:

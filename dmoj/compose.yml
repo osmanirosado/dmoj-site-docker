@@ -42,8 +42,8 @@ services:
     networks: [site]
   site:
     build:
-      context: base
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: base/Dockerfile
       target: site
     image: ninjaclasher/dmoj-site
     init: true
@@ -60,8 +60,8 @@ services:
     depends_on: [db, redis]
   celery:
     build:
-      context: base
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: base/Dockerfile
       target: celery
     image: ninjaclasher/dmoj-celery
     init: true
@@ -74,8 +74,8 @@ services:
     depends_on: [db, redis]
   bridged:
     build:
-      context: base
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: base/Dockerfile
       target: bridged
     image: ninjaclasher/dmoj-bridged
     init: true

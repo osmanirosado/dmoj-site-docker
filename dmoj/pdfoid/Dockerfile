@@ -41,6 +41,7 @@ COPY --from=temporal /home/pdfoid/ /home/pdfoid/
 
 WORKDIR /home/pdfoid
 
+RUN pip3 install selenium==4.9.1
 RUN pip3 install -e .
 
 RUN useradd pdfoid

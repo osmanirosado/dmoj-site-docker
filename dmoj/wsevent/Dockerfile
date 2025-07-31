@@ -1,5 +1,7 @@
 FROM node:22-slim
 
+WORKDIR /home
+
 RUN npm install qu ws simplesets
 
 COPY repo/websocket /home/code/websocket

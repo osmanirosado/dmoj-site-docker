@@ -302,5 +302,5 @@ DMOJ_PROBLEM_DATA_ROOT = '/mnt/problems/'
 
 DMOJ_RESOURCES = '/assets/resources/'
 
-MEDIA_ROOT = '/media/'
+MEDIA_ROOT = '/mnt/media/'
 MEDIA_URL = '/media/'

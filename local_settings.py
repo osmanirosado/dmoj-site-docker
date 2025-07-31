@@ -211,12 +211,12 @@ DMOJ_PDF_PROBLEM_CACHE = '/pdfcache'
 
 # Path to use for nginx's X-Accel-Redirect feature.
 # Should be an internal location mapped to the above directory.
-DMOJ_PDF_PROBLEM_INTERNAL = '/pdfcache'
+DMOJ_PDF_PROBLEM_INTERNAL = '/pdf-cache'
 
 
 DMOJ_USER_DATA_DOWNLOAD = True
 DMOJ_USER_DATA_CACHE = '/datacache'
-DMOJ_USER_DATA_INTERNAL = '/datacache'
+DMOJ_USER_DATA_INTERNAL = '/data-cache'
 
 #############
 ## Mathoid ##

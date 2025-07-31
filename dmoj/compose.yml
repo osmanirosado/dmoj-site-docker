@@ -104,11 +104,11 @@ services:
     ports:
       - "127.0.0.1:8080:80"
     volumes:
-      - assets:/assets/
-      - pdf_cache:/pdfcache/
-      - data_cache:/datacache/
-      - cache:/cache/
-      - ./data/media/:/media/
+      - assets:/mnt/assets/
+      - pdf_cache:/mnt/pdf_cache/
+      - data_cache:/mnt/data_cache/
+      - cache:/mnt/cache/
+      - ./data/media/:/mnt/media/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks: [nginx]
     depends_on: [site, wsevent]

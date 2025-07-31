@@ -53,8 +53,8 @@ services:
       - pdfcache:/pdfcache/
       - datacache:/datacache/
       - cache:/cache/
-      - ./media/:/media/
-      - ./problems/:/problems/
+      - ./data/media/:/media/
+      - ./data/problems/:/problems/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, nginx, db]
     depends_on: [db, redis]
@@ -82,7 +82,7 @@ services:
     restart: unless-stopped
     volumes:
       - pdfcache:/pdfcache/
-      - ./problems/:/problems/
+      - ./data/problems/:/problems/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, nginx, db]
     ports:
@@ -108,7 +108,7 @@ services:
       - pdfcache:/pdfcache/
       - datacache:/datacache/
       - cache:/cache/
-      - ./media/:/media/
+      - ./data/media/:/media/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks: [nginx]
     depends_on: [site, wsevent]

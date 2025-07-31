@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11-slim AS base
 
 RUN apt-get update && \
     apt-get install -y \
@@ -13,7 +13,28 @@ RUN apt-get update && \
 
 RUN npm install -g sass postcss-cli postcss autoprefixer
 
-COPY repo/requirements.txt .
-RUN pip3 install -r requirements.txt
+COPY repo/requirements.txt /home
+RUN pip3 install -r /home/requirements.txt
 
 RUN pip3 install pymysql mysqlclient django-redis redis websocket-client uwsgi
+
+# code
+COPY repo /home/code
+WORKDIR /home/code
+
+FROM base AS site
+
+EXPOSE 8000
+
+CMD uwsgi --ini uwsgi.ini
+
+FROM base AS celery
+
+CMD celery -A dmoj_celery worker -l info --concurrency=2
+
+FROM base AS bridged
+
+EXPOSE 9999
+EXPOSE 9998
+
+CMD python manage.py runbridged

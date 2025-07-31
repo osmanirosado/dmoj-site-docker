@@ -3,6 +3,7 @@ cd $(dirname $(dirname $0)) || exit
 
 #mkdir -p problems media
 
-#mv ../config.js repo/websocket/
-#mv ../local_settings.py repo/dmoj/
-#mv ../uwsgi.ini repo/
+cp ../uwsgi.ini base/
+cp ../local_settings.py base/
+cp ../config.js wsevent/
+cp ../nginx.conf nginx/conf.d/

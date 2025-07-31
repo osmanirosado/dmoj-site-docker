@@ -20,6 +20,13 @@ RUN pip3 install pymysql mysqlclient django-redis redis websocket-client uwsgi
 
 # code
 COPY repo /home/code
+
+# uwsgi config
+COPY base/uwsgi.ini /home/code
+
+# site settings
+COPY base/local_settings.py /home/code/dmoj
+
 WORKDIR /home/code
 
 FROM base AS site

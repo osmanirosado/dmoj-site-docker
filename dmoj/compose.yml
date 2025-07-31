@@ -90,8 +90,8 @@ services:
     depends_on: [db, redis]
   wsevent:
     build:
-      context: wsevent
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: wsevent/Dockerfile
     image: ninjaclasher/dmoj-wsevent
     init: true
     restart: unless-stopped
@@ -112,10 +112,12 @@ services:
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks: [nginx]
     depends_on: [site, wsevent]
+
 networks:
   site:
   db:
   nginx:
+
 volumes:
   assets:
   pdfcache:

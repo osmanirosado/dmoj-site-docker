@@ -298,7 +298,7 @@ X_FRAME_OPTIONS = 'DENY'
 CELERY_BROKER_URL = 'redis://redis:6379/0'
 CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 
-DMOJ_PROBLEM_DATA_ROOT = '/problems/'
+DMOJ_PROBLEM_DATA_ROOT = '/mnt/problems/'
 
 DMOJ_RESOURCES = '/assets/resources/'
 

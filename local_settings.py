@@ -207,7 +207,7 @@ TIMEZONE_MAP = 'http://naturalearth.springercarto.com/ne3_data/8192/textures/3_n
 
 ## PDF rendering settings.
 # Directory to cache the PDF.
-DMOJ_PDF_PROBLEM_CACHE = '/pdfcache'
+DMOJ_PDF_PROBLEM_CACHE = '/mnt/pdf_cache'
 
 # Path to use for nginx's X-Accel-Redirect feature.
 # Should be an internal location mapped to the above directory.

@@ -50,7 +50,7 @@ services:
     restart: unless-stopped
     volumes:
       - assets:/assets/
-      - pdf_cache:/pdfcache/
+      - pdf_cache:/mnt/pdf_cache
       - data_cache:/datacache/
       - cache:/cache/
       - ./data/media/:/mnt/media/
@@ -67,7 +67,7 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - pdf_cache:/pdfcache/
+      - pdf_cache:/mnt/pdf_cache
       - data_cache:/datacache/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, db]
@@ -81,7 +81,7 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - pdf_cache:/pdfcache/
+      - pdf_cache:/mnt/pdf_cache
       - ./data/problems/:/mnt/problems/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, nginx, db]

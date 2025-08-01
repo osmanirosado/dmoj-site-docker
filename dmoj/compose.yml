@@ -107,7 +107,8 @@ services:
       - assets:/mnt/assets/
       - pdf_cache:/mnt/pdf_cache/
       - data_cache:/mnt/data_cache/
-      - cache:/mnt/cache/
+      - mathoid_cache:/mnt/mathoid_cache/
+      - texoid_cache:/mnt/texoid_cache/
       - ./data/media/:/mnt/media/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks: [nginx]
@@ -122,4 +123,6 @@ volumes:
   assets:
   pdf_cache:
   data_cache:
+  mathoid_cache:
+  texoid_cache:
   cache:

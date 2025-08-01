@@ -25,6 +25,8 @@ RUN pip install --no-cache-dir -r /root/requirements.txt
 # addicional packages
 RUN pip install --no-cache-dir pymysql mysqlclient django-redis redis websocket-client uwsgi
 
+USER app
+
 # code
 COPY repo /home/app/code
 

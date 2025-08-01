@@ -223,7 +223,7 @@ DMOJ_USER_DATA_INTERNAL = '/data-cache'
 #############
 # Documentation: https://github.com/wikimedia/mathoid
 MATHOID_URL = 'http://mathoid:10044'
-MATHOID_CACHE_ROOT = '/mnt/mathoid_cache/'
+MATHOID_CACHE_ROOT = '/mnt/cache/mathoid'
 MATHOID_CACHE_URL = '//{host}/mathoid/'.format(host=HOST)
 
 ############

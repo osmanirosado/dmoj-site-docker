@@ -52,7 +52,7 @@ services:
       - assets:/mnt/assets/
       - pdf_cache:/mnt/cache/pdf
       - data_cache:/mnt/cache/data
-      - mathoid_cache:/mnt/mathoid_cache/
+      - mathoid_cache:/mnt/cache/mathoid
       - texoid_cache:/mnt/texoid_cache/
       - ./data/media/:/mnt/media/
       - ./data/problems/:/mnt/problems/
@@ -108,7 +108,7 @@ services:
       - assets:/mnt/assets/
       - pdf_cache:/mnt/cache/pdf
       - data_cache:/mnt/cache/data
-      - mathoid_cache:/mnt/mathoid_cache/
+      - mathoid_cache:/mnt/cache/mathoid
       - texoid_cache:/mnt/texoid_cache/
       - ./data/media/:/mnt/media/
       - ./nginx/conf.d/:/etc/nginx/conf.d/

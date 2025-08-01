@@ -1,8 +1,5 @@
 FROM python:3.11-slim AS base
 
-# user
-RUN useradd --create-home --system --user-group --shell=/usr/sbin/nologin app
-
 # system dependencies
 RUN apt-get update && \
     apt-get install -y \
@@ -25,24 +22,22 @@ RUN pip install --no-cache-dir -r /root/requirements.txt
 # addicional packages
 RUN pip install --no-cache-dir pymysql mysqlclient django-redis redis websocket-client uwsgi
 
-USER app
-
 # code
-COPY repo /home/app/code
+COPY repo /opt/app/code
 
 # uwsgi config
-COPY base/uwsgi.ini /home/app
+COPY base/uwsgi.ini /opt/app
 
 # site settings
-COPY base/local_settings.py /home/app/code/dmoj
+COPY base/local_settings.py /opt/app/code/dmoj
 
-WORKDIR /home/app/code
+WORKDIR /opt/app/code
 
 FROM base AS site
 
 EXPOSE 8000
 
-CMD uwsgi --ini /home/app/uwsgi.ini
+CMD uwsgi --ini /opt/app/uwsgi.ini
 
 FROM base AS celery
 
@@ -53,4 +48,4 @@ FROM base AS bridged
 EXPOSE 9999
 EXPOSE 9998
 
-CMD python /home/app/code/manage.py runbridged
+CMD python /opt/app/code/manage.py runbridged

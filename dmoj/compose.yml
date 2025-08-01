@@ -37,8 +37,6 @@ services:
     image: ninjaclasher/dmoj-mathoid
     init: true
     restart: unless-stopped
-    volumes:
-      - ./mathoid/config.yaml:/home/node/node_modules/mathoid/config.yaml
     networks: [site]
   site:
     build:

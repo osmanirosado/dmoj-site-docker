@@ -237,7 +237,7 @@ DMOJ_PDF_PDFOID_URL = 'http://pdfoid:8888'
 ############
 
 TEXOID_URL = 'http://texoid:8888'
-TEXOID_CACHE_ROOT = '/mnt/texoid_cache/'
+TEXOID_CACHE_ROOT = '/mnt/cache/texoid'
 TEXOID_CACHE_URL = '//{host}/texoid/'.format(host=HOST)
 
 ## ======== Logging Settings ========

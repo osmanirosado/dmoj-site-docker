@@ -53,7 +53,7 @@ services:
       - pdf_cache:/mnt/cache/pdf
       - data_cache:/mnt/cache/data
       - mathoid_cache:/mnt/cache/mathoid
-      - texoid_cache:/mnt/texoid_cache/
+      - texoid_cache:/mnt/cache/texoid
       - ./data/media/:/mnt/media/
       - ./data/problems/:/mnt/problems/
     env_file: [environment/mysql.env, environment/site.env]
@@ -109,7 +109,7 @@ services:
       - pdf_cache:/mnt/cache/pdf
       - data_cache:/mnt/cache/data
       - mathoid_cache:/mnt/cache/mathoid
-      - texoid_cache:/mnt/texoid_cache/
+      - texoid_cache:/mnt/cache/texoid
       - ./data/media/:/mnt/media/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks: [nginx]

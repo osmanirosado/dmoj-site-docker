@@ -215,7 +215,7 @@ DMOJ_PDF_PROBLEM_INTERNAL = '/pdf-cache'
 
 
 DMOJ_USER_DATA_DOWNLOAD = True
-DMOJ_USER_DATA_CACHE = '/mnt/data_cache'
+DMOJ_USER_DATA_CACHE = '/mnt/cache/data'
 DMOJ_USER_DATA_INTERNAL = '/data-cache'
 
 #############

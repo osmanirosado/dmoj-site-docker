@@ -51,7 +51,7 @@ services:
     volumes:
       - assets:/mnt/assets/
       - pdf_cache:/mnt/cache/pdf
-      - data_cache:/mnt/data_cache
+      - data_cache:/mnt/cache/data
       - cache:/mnt/cache/
       - ./data/media/:/mnt/media/
       - ./data/problems/:/mnt/problems/
@@ -68,7 +68,7 @@ services:
     restart: unless-stopped
     volumes:
       - pdf_cache:/mnt/cache/pdf
-      - data_cache:/mnt/data_cache
+      - data_cache:/mnt/cache/data
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, db]
     depends_on: [db, redis]
@@ -106,7 +106,7 @@ services:
     volumes:
       - assets:/mnt/assets/
       - pdf_cache:/mnt/cache/pdf
-      - data_cache:/mnt/data_cache/
+      - data_cache:/mnt/cache/data
       - mathoid_cache:/mnt/mathoid_cache/
       - texoid_cache:/mnt/texoid_cache/
       - ./data/media/:/mnt/media/

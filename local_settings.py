@@ -271,11 +271,14 @@ LOGGING = {
     },
     'handlers': {
         # You may use this handler as an example for logging to other files.
-        'bridge': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'file',
-        },
+        # 'bridge': {
+        #     'level': 'INFO',
+        #     'class': 'logging.handlers.RotatingFileHandler',
+        #     'filename': '/var/log/dmoj/dmoj-bridge.log',
+        #     'maxBytes': 10 * 1024 * 1024,
+        #     'backupCount': 10,
+        #     'formatter': 'file',
+        # },
         'mail_admins': {
             'level': 'ERROR',
             'class': 'dmoj.throttle_mail.ThrottledEmailHandler',
@@ -295,7 +298,10 @@ LOGGING = {
         },
         # Judging logs as received by bridged.
         'judge.bridge': {
-            'handlers': ['bridge', 'mail_admins'],
+            'handlers': [
+                # 'bridge',
+                'mail_admins'
+            ],
             'level': 'INFO',
             'propagate': True,
         },

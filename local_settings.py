@@ -233,7 +233,7 @@ TIMEZONE_MAP = 'http://naturalearth.springercarto.com/ne3_data/8192/textures/3_n
 DMOJ_PDF_PDFOID_URL = 'http://pdfoid:8888'
 
 # Directory to cache the PDF.
-DMOJ_PDF_PROBLEM_CACHE = '/mnt/cache/pdf'
+DMOJ_PDF_PROBLEM_CACHE = '/var/cache/dmoj/pdf'
 
 # Path to use for nginx's X-Accel-Redirect feature.
 # Should be an internal location mapped to the above directory.
@@ -245,7 +245,7 @@ DMOJ_USER_DATA_DOWNLOAD = True
 
 # Directory to cache user data downloads.
 # It is the administrator's responsibility to clean up old files.
-DMOJ_USER_DATA_CACHE = '/mnt/cache/data'
+DMOJ_USER_DATA_CACHE = '/var/cache/dmoj/data'
 
 # Path to use for nginx's X-Accel-Redirect feature.
 # Should be an internal location mapped to the above directory.
@@ -355,7 +355,7 @@ MATHOID_URL = 'http://mathoid:10044'
 
 # A directory accessible by the user running Mathoid, as well as the web (nginx) user.
 # For optimal performance, change this to something more persistent than /tmp.
-MATHOID_CACHE_ROOT = '/mnt/cache/mathoid'
+MATHOID_CACHE_ROOT = '/var/cache/dmoj/mathoid'
 
 # The URL base MATHOID_CACHE_ROOT is configured to be served under in your webserver. For
 # example, if /tmp/mathoid_cache/render.png exists, example.com/mathoid/render.png should
@@ -371,7 +371,7 @@ TEXOID_URL = 'http://texoid:8888'
 #
 # For optimal performance (since launching texlive is expensive), change this
 # to something more persistent than /tmp.
-TEXOID_CACHE_ROOT = '/mnt/cache/texoid'
+TEXOID_CACHE_ROOT = '/var/cache/dmoj/texoid'
 
 # The URL base TEXOID_CACHE_ROOT is configured to be served under in your
 # webserver. For example, if /tmp/texoid_cache/render.png exists,

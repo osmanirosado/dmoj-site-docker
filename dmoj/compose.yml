@@ -48,10 +48,10 @@ services:
     restart: unless-stopped
     volumes:
       - assets:/mnt/assets/
-      - pdf_cache:/mnt/cache/pdf
-      - data_cache:/mnt/cache/data
-      - mathoid_cache:/mnt/cache/mathoid
-      - texoid_cache:/mnt/cache/texoid
+      - pdf_cache:/var/cache/dmoj/pdf
+      - data_cache:/var/cache/dmoj/data
+      - mathoid_cache:/var/cache/dmoj/mathoid
+      - texoid_cache:/var/cache/dmoj/texoid
       - ./data/media/:/mnt/media/
       - ./data/problems/:/mnt/problems/
     env_file: [environment/mysql.env, environment/site.env]
@@ -66,8 +66,8 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - pdf_cache:/mnt/cache/pdf
-      - data_cache:/mnt/cache/data
+      - pdf_cache:/var/cache/dmoj/pdf
+      - data_cache:/var/cache/dmoj/data
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, db]
     depends_on: [db, redis]
@@ -80,7 +80,7 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - pdf_cache:/mnt/cache/pdf
+      - pdf_cache:/var/cache/dmoj/pdf
       - ./data/problems/:/mnt/problems/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, nginx, db]
@@ -104,10 +104,10 @@ services:
       - "127.0.0.1:8080:80"
     volumes:
       - assets:/mnt/assets/
-      - pdf_cache:/mnt/cache/pdf
-      - data_cache:/mnt/cache/data
-      - mathoid_cache:/mnt/cache/mathoid
-      - texoid_cache:/mnt/cache/texoid
+      - pdf_cache:/var/cache/dmoj/pdf
+      - data_cache:/var/cache/dmoj/data
+      - mathoid_cache:/var/cache/dmoj/mathoid
+      - texoid_cache:/var/cache/dmoj/texoid
       - ./data/media/:/mnt/media/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks: [nginx]

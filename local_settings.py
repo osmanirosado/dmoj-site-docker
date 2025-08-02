@@ -230,7 +230,7 @@ TIMEZONE_MAP = 'http://naturalearth.springercarto.com/ne3_data/8192/textures/3_n
 ## PDF rendering settings.
 
 # Enable PDF generation.
-DMOJ_PDF_PDFOID_URL = 'http://pdfoid:8888'
+DMOJ_PDF_PDFOID_URL = 'http://pdfoid:8887'
 
 # Directory to cache the PDF.
 DMOJ_PDF_PROBLEM_CACHE = '/var/cache/dmoj/pdf'

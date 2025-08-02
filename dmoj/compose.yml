@@ -52,7 +52,7 @@ services:
       - data_cache:/var/cache/dmoj/data
       - mathoid_cache:/var/cache/dmoj/mathoid
       - texoid_cache:/var/cache/dmoj/texoid
-      - ./data/media/:/mnt/media/
+      - ./data/media/:/var/lib/dmoj/media/
       - ./data/problems/:/var/lib/dmoj/problems/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, nginx, db]
@@ -108,7 +108,7 @@ services:
       - data_cache:/var/cache/dmoj/data
       - mathoid_cache:/var/cache/dmoj/mathoid
       - texoid_cache:/var/cache/dmoj/texoid
-      - ./data/media/:/mnt/media/
+      - ./data/media/:/var/lib/dmoj/media/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks: [nginx]
     depends_on: [site, wsevent]

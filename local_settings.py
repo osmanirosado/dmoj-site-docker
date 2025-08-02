@@ -351,7 +351,7 @@ MEDIA_URL = '/media/'
 
 ## ======== Mathoid Settings ========
 # The URL Mathoid is running on.
-MATHOID_URL = 'http://mathoid:10044'
+MATHOID_URL = 'http://mathoid:8888'
 
 # A directory accessible by the user running Mathoid, as well as the web (nginx) user.
 # For optimal performance, change this to something more persistent than /tmp.

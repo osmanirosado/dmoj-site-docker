@@ -6,7 +6,7 @@ RUN npm install mathoid@0.7.6
 
 COPY config.yaml /home/node/node_modules/mathoid/
 
-EXPOSE 10044
+EXPOSE 8888
 
 WORKDIR /home/node/node_modules/mathoid
 

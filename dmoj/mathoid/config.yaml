@@ -30,7 +30,7 @@ services:
     # version: ^0.4.0
     # per-service config
     conf:
-      port: 10044
+      port: 8888
       interface: mathoid
       # more per-service config settings
       # the location of the spec, defaults to spec.yaml if not specified

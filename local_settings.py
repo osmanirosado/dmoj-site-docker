@@ -364,7 +364,7 @@ MATHOID_CACHE_URL = f'//{HOST}/mathoid/'
 
 ## ======== Texoid Settings ========
 # The URL Texoid is running on.
-TEXOID_URL = 'http://texoid:8888'
+TEXOID_URL = 'http://texoid:8886'
 
 # A directory accessible by the user running Texoid, as well as the web (nginx)
 # user.

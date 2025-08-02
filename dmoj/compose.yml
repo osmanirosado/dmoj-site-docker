@@ -69,6 +69,7 @@ services:
     volumes:
       - pdf_cache:/var/cache/dmoj/pdf
       - data_cache:/var/cache/dmoj/data
+      - ./data/log/:/var/log/dmoj/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, db]
     depends_on: [db, redis]
@@ -83,6 +84,7 @@ services:
     volumes:
       - pdf_cache:/var/cache/dmoj/pdf
       - ./data/problems/:/var/lib/dmoj/problems/
+      - ./data/log/:/var/log/dmoj/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, nginx, db]
     ports:

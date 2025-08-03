@@ -23,21 +23,21 @@ RUN pip install --no-cache-dir -r /root/requirements.txt
 RUN pip install --no-cache-dir pymysql mysqlclient django-redis redis websocket-client uwsgi
 
 # code
-COPY repo /opt/app/code
+COPY repo /opt/dmoj/code
 
 # uwsgi config
-COPY base/uwsgi.ini /opt/app
+COPY base/uwsgi.ini /opt/dmoj
 
 # site settings
-COPY base/local_settings.py /opt/app/code/dmoj
+COPY base/local_settings.py /opt/dmoj/code/dmoj
 
-WORKDIR /opt/app/code
+WORKDIR /opt/dmoj/code
 
 FROM base AS site
 
 EXPOSE 8000
 
-CMD uwsgi --ini /opt/app/uwsgi.ini
+CMD uwsgi --ini /opt/dmoj/uwsgi.ini
 
 FROM base AS celery
 
@@ -48,4 +48,4 @@ FROM base AS bridged
 EXPOSE 9999
 EXPOSE 9998
 
-CMD python /opt/app/code/manage.py runbridged
+CMD python /opt/dmoj/code/manage.py runbridged

@@ -1,6 +1,6 @@
 services:
   db:
-    container_name: dmoj-mysql
+    container_name: dmoj-mariadb
     image: mariadb
     restart: always
     volumes:

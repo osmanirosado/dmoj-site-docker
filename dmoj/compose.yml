@@ -106,12 +106,12 @@ services:
     ports:
       - "127.0.0.1:8080:80"
     volumes:
-      - assets:/opt/dmoj/lib/assets/
-      - pdf_cache:/opt/dmoj/cache/pdf/
-      - data_cache:/opt/dmoj/cache/data/
-      - mathoid_cache:/opt/dmoj/cache/mathoid/
-      - texoid_cache:/opt/dmoj/cache/texoid/
-      - /opt/dmoj/lib/media/:/opt/dmoj/lib/media/
+      - assets:/opt/dmoj/lib/assets/:ro
+      - pdf_cache:/opt/dmoj/cache/pdf/:ro
+      - data_cache:/opt/dmoj/cache/data/:ro
+      - mathoid_cache:/opt/dmoj/cache/mathoid/:ro
+      - texoid_cache:/opt/dmoj/cache/texoid/:ro
+      - /opt/dmoj/lib/media/:/opt/dmoj/lib/media/:ro
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks: [nginx]
     depends_on: [site, wsevent]

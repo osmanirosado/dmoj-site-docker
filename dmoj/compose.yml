@@ -127,4 +127,3 @@ volumes:
   data_cache:
   mathoid_cache:
   texoid_cache:
-  cache:

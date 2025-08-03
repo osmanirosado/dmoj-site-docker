@@ -274,7 +274,7 @@ LOGGING = {
         'bridge': {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': '/var/log/dmoj/dmoj-bridge.log',
+            'filename': '/opt/dmoj/log/dmoj-bridge.log',
             'maxBytes': 10 * 1024 * 1024,
             'backupCount': 10,
             'formatter': 'file',

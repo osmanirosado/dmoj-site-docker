@@ -52,9 +52,9 @@ services:
       - data_cache:/opt/dmoj/cache/data/
       - mathoid_cache:/opt/dmoj/cache/mathoid/
       - texoid_cache:/opt/dmoj/cache/texoid/
-      - ./data/media/:/opt/dmoj/lib/media/
-      - ./data/problems/:/opt/dmoj/lib/problems/
-      - ./data/log/:/opt/dmoj/log/
+      - /opt/dmoj/lib/media/:/opt/dmoj/lib/media/
+      - /opt/dmoj/lib/problems/:/opt/dmoj/lib/problems/
+      - /opt/dmoj/log/:/opt/dmoj/log/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, nginx, db]
     depends_on: [db, redis]
@@ -69,7 +69,7 @@ services:
     volumes:
       - pdf_cache:/opt/dmoj/cache/pdf/
       - data_cache:/opt/dmoj/cache/data/
-      - ./data/log/:/opt/dmoj/log/
+      - /opt/dmoj/log/:/opt/dmoj/log/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, db]
     depends_on: [db, redis]
@@ -83,8 +83,8 @@ services:
     restart: unless-stopped
     volumes:
       - pdf_cache:/opt/dmoj/cache/pdf/
-      - ./data/problems/:/opt/dmoj/lib/problems/
-      - ./data/log/:/opt/dmoj/log/
+      - /opt/dmoj/lib/problems/:/opt/dmoj/lib/problems/
+      - /opt/dmoj/log/:/opt/dmoj/log/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, nginx, db]
     ports:
@@ -111,7 +111,7 @@ services:
       - data_cache:/opt/dmoj/cache/data/
       - mathoid_cache:/opt/dmoj/cache/mathoid/
       - texoid_cache:/opt/dmoj/cache/texoid/
-      - ./data/media/:/opt/dmoj/lib/media/
+      - /opt/dmoj/lib/media/:/opt/dmoj/lib/media/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks: [nginx]
     depends_on: [site, wsevent]

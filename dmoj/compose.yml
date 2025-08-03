@@ -47,13 +47,13 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - assets:/var/lib/dmoj/assets/
+      - assets:/opt/dmoj/lib/assets/
       - pdf_cache:/opt/dmoj/cache/pdf/
       - data_cache:/opt/dmoj/cache/data/
       - mathoid_cache:/opt/dmoj/cache/mathoid/
       - texoid_cache:/opt/dmoj/cache/texoid/
-      - ./data/media/:/var/lib/dmoj/media/
-      - ./data/problems/:/var/lib/dmoj/problems/
+      - ./data/media/:/opt/dmoj/lib/media/
+      - ./data/problems/:/opt/dmoj/lib/problems/
       - ./data/log/:/opt/dmoj/log/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, nginx, db]
@@ -83,7 +83,7 @@ services:
     restart: unless-stopped
     volumes:
       - pdf_cache:/opt/dmoj/cache/pdf/
-      - ./data/problems/:/var/lib/dmoj/problems/
+      - ./data/problems/:/opt/dmoj/lib/problems/
       - ./data/log/:/opt/dmoj/log/
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, nginx, db]
@@ -106,12 +106,12 @@ services:
     ports:
       - "127.0.0.1:8080:80"
     volumes:
-      - assets:/var/lib/dmoj/assets/
+      - assets:/opt/dmoj/lib/assets/
       - pdf_cache:/opt/dmoj/cache/pdf/
       - data_cache:/opt/dmoj/cache/data/
       - mathoid_cache:/opt/dmoj/cache/mathoid/
       - texoid_cache:/opt/dmoj/cache/texoid/
-      - ./data/media/:/var/lib/dmoj/media/
+      - ./data/media/:/opt/dmoj/lib/media/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks: [nginx]
     depends_on: [site, wsevent]

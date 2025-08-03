@@ -126,7 +126,7 @@ SERVER_EMAIL = 'DMOJ: Modern Online Judge <errors@dmoj.ca>'
 # webserver to serve the static files. This is the directory where all the
 # static files DMOJ uses will be collected to.
 # You must configure your webserver to serve this directory as /static/ in production.
-STATIC_ROOT = '/var/lib/dmoj/assets/static/'
+STATIC_ROOT = '/opt/dmoj/lib/assets/static/'
 
 # URL to access static files.
 STATIC_URL = '/static/'
@@ -334,12 +334,12 @@ LOGGING = {
 REGISTRATION_OPEN = False
 
 ## Problem data
-DMOJ_PROBLEM_DATA_ROOT = '/var/lib/dmoj/problems/'
+DMOJ_PROBLEM_DATA_ROOT = '/opt/dmoj/lib/problems/'
 
 ## ======== Media Settings ========
 # A directory accessible by the user running the site, as well as the web (nginx) user.
 # For optimal performance, change this to something more persistent than /tmp.
-MEDIA_ROOT = '/var/lib/dmoj/media/'
+MEDIA_ROOT = '/opt/dmoj/lib/media/'
 
 # The URL base MEDIA_ROOT is configured to be served under in your webserver. For
 # example, if /tmp/media/render.png exists, example.com/media/render.png should

@@ -6,6 +6,6 @@ docker compose exec $COMPOSE_EXEC_FLAGS site /bin/bash -c "\
     python3 manage.py collectstatic --noinput && \
     python3 manage.py compilemessages && \
     python3 manage.py compilejsi18n && \
-    cp 502.html /var/lib/dmoj/assets/ && \
-    cp logo.png /var/lib/dmoj/assets/ && \
-    cp robots.txt /var/lib/dmoj/assets/"
+    cp 502.html /opt/dmoj/lib/assets/ && \
+    cp logo.png /opt/dmoj/lib/assets/ && \
+    cp robots.txt /opt/dmoj/lib/assets/"

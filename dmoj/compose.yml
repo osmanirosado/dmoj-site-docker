@@ -53,7 +53,7 @@ services:
       - mathoid_cache:/opt/dmoj/cache/mathoid/
       - texoid_cache:/opt/dmoj/cache/texoid/
       - /var/opt/lib/dmoj/media/:/var/opt/lib/dmoj/media/
-      - /opt/dmoj/lib/problems/:/opt/dmoj/lib/problems/
+      - /var/opt/lib/dmoj/problems/:/var/opt/lib/dmoj/problems/
       - /opt/dmoj/log/:/opt/dmoj/log/
     env_file: [ env/mysql.env, env/site.env ]
     networks: [site, nginx, db]
@@ -83,7 +83,7 @@ services:
     restart: unless-stopped
     volumes:
       - pdf_cache:/opt/dmoj/cache/pdf/
-      - /opt/dmoj/lib/problems/:/opt/dmoj/lib/problems/
+      - /var/opt/lib/dmoj/problems/:/var/opt/lib/dmoj/problems/
       - /opt/dmoj/log/:/opt/dmoj/log/
     env_file: [ env/mysql.env, env/site.env ]
     networks: [site, nginx, db]

@@ -334,7 +334,7 @@ LOGGING = {
 REGISTRATION_OPEN = False
 
 ## Problem data
-DMOJ_PROBLEM_DATA_ROOT = '/opt/dmoj/lib/problems/'
+DMOJ_PROBLEM_DATA_ROOT = '/var/opt/lib/dmoj/problems/'
 
 ## ======== Media Settings ========
 # A directory accessible by the user running the site, as well as the web (nginx) user.

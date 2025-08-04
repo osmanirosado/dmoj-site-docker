@@ -47,7 +47,7 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - assets:/opt/dmoj/lib/assets/
+      - assets:/var/opt/lib/dmoj/assets/
       - pdf_cache:/var/cache/dmoj/pdf/
       - data_cache:/var/cache/dmoj/data/
       - mathoid_cache:/var/cache/dmoj/mathoid/
@@ -106,7 +106,7 @@ services:
     ports:
       - "127.0.0.1:8080:80"
     volumes:
-      - assets:/opt/dmoj/lib/assets/:ro
+      - assets:/var/opt/lib/dmoj/assets/:ro
       - pdf_cache:/var/cache/dmoj/pdf/:ro
       - data_cache:/var/cache/dmoj/data/:ro
       - mathoid_cache:/var/cache/dmoj/mathoid/:ro

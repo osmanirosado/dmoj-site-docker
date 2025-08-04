@@ -46,7 +46,6 @@ services:
     image: ninjaclasher/dmoj-site
     init: true
     restart: unless-stopped
-    user: 1000:1000
     volumes:
       - assets:/var/opt/lib/dmoj/assets/
       - pdf_cache:/var/cache/dmoj/pdf/
@@ -67,7 +66,6 @@ services:
     image: ninjaclasher/dmoj-celery
     init: true
     restart: unless-stopped
-    user: 1000:1000
     volumes:
       - pdf_cache:/var/cache/dmoj/pdf/
       - data_cache:/var/cache/dmoj/data/
@@ -83,7 +81,6 @@ services:
     image: ninjaclasher/dmoj-bridged
     init: true
     restart: unless-stopped
-    user: 1000:1000
     volumes:
       - pdf_cache:/var/cache/dmoj/pdf/
       - /var/opt/lib/dmoj/problems/:/var/opt/lib/dmoj/problems/

@@ -339,7 +339,7 @@ DMOJ_PROBLEM_DATA_ROOT = '/opt/dmoj/lib/problems/'
 ## ======== Media Settings ========
 # A directory accessible by the user running the site, as well as the web (nginx) user.
 # For optimal performance, change this to something more persistent than /tmp.
-MEDIA_ROOT = '/opt/dmoj/lib/media/'
+MEDIA_ROOT = '/var/opt/lib/dmoj/media/'
 
 # The URL base MEDIA_ROOT is configured to be served under in your webserver. For
 # example, if /tmp/media/render.png exists, example.com/media/render.png should

@@ -16,7 +16,7 @@ services:
     build:
       context: texoid
       dockerfile: Dockerfile
-    image: ninjaclasher/dmoj-texoid
+    image: dmoj-texoid
     init: true
     restart: unless-stopped
     networks: [site]
@@ -24,7 +24,7 @@ services:
     build:
       context: pdfoid
       dockerfile: Dockerfile
-    image: ninjaclasher/dmoj-pdfoid
+    image: dmoj-pdfoid
     init: true
     restart: unless-stopped
     networks: [site]
@@ -34,7 +34,7 @@ services:
     build:
       context: mathoid
       dockerfile: Dockerfile
-    image: ninjaclasher/dmoj-mathoid
+    image: dmoj-mathoid
     init: true
     restart: unless-stopped
     networks: [site]
@@ -43,7 +43,7 @@ services:
       context: .
       dockerfile: base/Dockerfile
       target: site
-    image: ninjaclasher/dmoj-site
+    image: dmoj-site
     init: true
     restart: unless-stopped
     volumes:
@@ -63,7 +63,7 @@ services:
       context: .
       dockerfile: base/Dockerfile
       target: celery
-    image: ninjaclasher/dmoj-celery
+    image: dmoj-celery
     init: true
     restart: unless-stopped
     volumes:
@@ -78,7 +78,7 @@ services:
       context: .
       dockerfile: base/Dockerfile
       target: bridged
-    image: ninjaclasher/dmoj-bridged
+    image: dmoj-bridged
     init: true
     restart: unless-stopped
     volumes:
@@ -94,7 +94,7 @@ services:
     build:
       context: .
       dockerfile: wsevent/Dockerfile
-    image: ninjaclasher/dmoj-wsevent
+    image: dmoj-wsevent
     init: true
     restart: unless-stopped
     env_file: [ env/mysql.env, env/site.env ]

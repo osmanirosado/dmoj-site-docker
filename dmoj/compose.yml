@@ -100,7 +100,10 @@ services:
     env_file: [ env/mysql.env, env/site.env ]
     networks: [site, nginx]
   nginx:
-    image: nginx:alpine
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    image: dmoj-nginx
     restart: always
     ports:
       - "127.0.0.1:8080:80"
@@ -111,7 +114,6 @@ services:
       - mathoid_cache:/var/cache/dmoj/mathoid/:ro
       - texoid_cache:/var/cache/dmoj/texoid/:ro
       - /var/opt/lib/dmoj/media/:/var/opt/lib/dmoj/media/:ro
-      - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks: [nginx]
     depends_on: [site, wsevent]
 

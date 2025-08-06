@@ -6,4 +6,4 @@ cd $(dirname $(dirname $0)) || exit
 cp base/example/uwsgi.ini base/
 cp base/example/local_settings.py base/
 cp wsevent/example/config.js wsevent/
-cp nginx/example/nginx.conf nginx/conf.d/
+cp nginx/example/nginx.conf nginx/

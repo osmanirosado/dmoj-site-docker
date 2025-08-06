@@ -2,7 +2,6 @@ name: dmoj-site
 
 services:
   db:
-    container_name: dmoj-mariadb
     image: mariadb
     restart: always
     volumes:
@@ -10,7 +9,6 @@ services:
     env_file: [ env/mysql.env, env/mysql-admin.env ]
     networks: [db]
   redis:
-    container_name: dmoj-redis
     image: redis:alpine
     restart: always
     networks: [site]
@@ -102,7 +100,6 @@ services:
     env_file: [ env/mysql.env, env/site.env ]
     networks: [site, nginx]
   nginx:
-    container_name: dmoj-nginx
     image: nginx:alpine
     restart: always
     ports:

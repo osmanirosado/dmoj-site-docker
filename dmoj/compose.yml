@@ -1,4 +1,4 @@
-name: dmoj-site
+name: dmoj
 
 services:
   db:

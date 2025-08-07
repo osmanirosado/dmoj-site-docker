@@ -1,7 +1,7 @@
 FROM bash:5.3 as temporal
 
 ARG STORAGE_GOOGLE_APIS=nexus.uclv.edu.cu/repository/storage.googleapis.com
-ARG CHROME_RELEASE=138.0.7204.168
+ARG CHROME_RELEASE=123.0.6309.0
 
 WORKDIR /home
 

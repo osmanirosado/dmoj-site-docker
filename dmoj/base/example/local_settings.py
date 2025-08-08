@@ -201,10 +201,10 @@ CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 ## CDN control.
 # Base URL for a copy of Ace editor.
 # Should contain ace.js, along with mode-*.js.
-ACE_URL = '//cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/'
-JQUERY_JS = '//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js'
-SELECT2_JS_URL = '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js'
-SELECT2_CSS_URL = '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css'
+ACE_URL = f'//{HOST}/cdnjs/ajax/libs/ace/1.2.3/'
+JQUERY_JS = f'//{HOST}/cdnjs/ajax/libs/jquery/2.2.4/jquery.min.js'
+SELECT2_JS_URL = f'//{HOST}/cdnjs/ajax/libs/select2/4.0.3/js/select2.min.js'
+SELECT2_CSS_URL = f'//{HOST}/cdnjs/ajax/libs/select2/4.0.3/css/select2.min.css'
 
 # A map of Earth in equirectangular projection, for timezone selection.
 # Please try not to hotlink this poor site.

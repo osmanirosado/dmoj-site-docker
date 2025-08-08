@@ -10,8 +10,8 @@ RUN wget "https://$STORAGE_GOOGLE_APIS/chrome-for-testing-public/$CHROME_RELEASE
 RUN unzip chrome-linux64.zip && mv chrome-linux64 chrome
 
 # chrome headlees shell
-RUN wget "https://$STORAGE_GOOGLE_APIS/chrome-for-testing-public/$CHROME_RELEASE/linux64/chrome-headless-shell-linux64.zip"
-RUN unzip chrome-headless-shell-linux64.zip && mv chrome-headless-shell-linux64 chrome-headless-shell
+#RUN wget "https://$STORAGE_GOOGLE_APIS/chrome-for-testing-public/$CHROME_RELEASE/linux64/chrome-headless-shell-linux64.zip"
+#RUN unzip chrome-headless-shell-linux64.zip && mv chrome-headless-shell-linux64 chrome-headless-shell
 
 # chrome driver
 RUN wget "https://$STORAGE_GOOGLE_APIS/chrome-for-testing-public/$CHROME_RELEASE/linux64/chromedriver-linux64.zip"

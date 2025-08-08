@@ -5,7 +5,9 @@ RUN apt-get update && apt-get install -y wget && apt-get clean
 COPY cdnjs/urls.txt /home/cdnjs/
 COPY cdnjs/wget-urls.sh /home/cdnjs/
 
-RUN bash /home/cdnjs/wget-urls.sh
+WORKDIR /home/cdnjs/
+
+RUN bash wget-urls.sh
 
 FROM nginx:stable
 

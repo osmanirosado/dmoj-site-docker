@@ -1,4 +1,4 @@
-FROM bash:5.3 as temporal
+FROM bash:5.3 AS temporal
 
 ARG STORAGE_GOOGLE_APIS=nexus.uclv.edu.cu/repository/storage.googleapis.com
 ARG CHROME_RELEASE=123.0.6309.0

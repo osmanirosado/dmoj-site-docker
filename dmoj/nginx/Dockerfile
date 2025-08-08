@@ -3,17 +3,14 @@ FROM debian:12-slim as temporal
 RUN apt-get update && apt-get install -y wget && apt-get clean
 
 COPY cdnjs/urls.txt /home/cdnjs/
-COPY cdnjs/wget-urls.sh /home/cdnjs/
 
 WORKDIR /home/cdnjs/
 
-RUN bash wget-urls.sh urls.txt
-
-COPY wikipedia/wget-map.sh /home/wikipedia/
+RUN wget --directory-prefix downloads --no-host-directories --force-directories --input-file urls.txt
 
 WORKDIR /home/wikipedia/
 
-RUN bash wget-map.sh
+RUN wget --directory-prefix downloads 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Blue_Marble_2002.png/1024px-Blue_Marble_2002.png'
 
 FROM nginx:stable
 

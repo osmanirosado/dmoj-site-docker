@@ -208,7 +208,7 @@ SELECT2_CSS_URL = f'//{HOST}/cdnjs/ajax/libs/select2/4.0.3/css/select2.min.css'
 
 # A map of Earth in equirectangular projection, for timezone selection.
 # Please try not to hotlink this poor site.
-TIMEZONE_MAP = 'http://naturalearth.springercarto.com/ne3_data/8192/textures/3_no_ice_clouds_8k.jpg'
+TIMEZONE_MAP = f'//{HOST}/wikipedia/1024px-Blue_Marble_2002.png'
 
 ## Camo (https://github.com/atmos/camo) usage.
 #DMOJ_CAMO_URL = '<URL to your camo install>'

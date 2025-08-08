@@ -6,19 +6,19 @@ ARG CHROME_RELEASE=123.0.6309.0
 WORKDIR /home
 
 # chrome
-RUN wget https://"$STORAGE_GOOGLE_APIS"/chrome-for-testing-public/"$CHROME_RELEASE"/linux64/chrome-linux64.zip
+RUN wget "https://$STORAGE_GOOGLE_APIS/chrome-for-testing-public/$CHROME_RELEASE/linux64/chrome-linux64.zip"
 RUN unzip chrome-linux64.zip && mv chrome-linux64 chrome
 
 # chrome headlees shell
-RUN wget https://"$STORAGE_GOOGLE_APIS"/chrome-for-testing-public/"$CHROME_RELEASE"/linux64/chrome-headless-shell-linux64.zip
+RUN wget "https://$STORAGE_GOOGLE_APIS/chrome-for-testing-public/$CHROME_RELEASE/linux64/chrome-headless-shell-linux64.zip"
 RUN unzip chrome-headless-shell-linux64.zip && mv chrome-headless-shell-linux64 chrome-headless-shell
 
 # chrome driver
-RUN wget https://"$STORAGE_GOOGLE_APIS"/chrome-for-testing-public/"$CHROME_RELEASE"/linux64/chromedriver-linux64.zip
+RUN wget "https://$STORAGE_GOOGLE_APIS/chrome-for-testing-public/$CHROME_RELEASE/linux64/chromedriver-linux64.zip"
 RUN unzip chromedriver-linux64.zip && mv chromedriver-linux64 chromedriver
 
 # pdfoid
-RUN wget https://github.com/DMOJ/pdfoid/archive/refs/heads/master.zip
+RUN wget 'https://github.com/DMOJ/pdfoid/archive/refs/heads/master.zip'
 RUN unzip master.zip && mv pdfoid-master pdfoid
 
 FROM python:3.11-slim

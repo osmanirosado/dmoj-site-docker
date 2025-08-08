@@ -7,7 +7,7 @@ COPY cdnjs/wget-urls.sh /home/cdnjs/
 
 WORKDIR /home/cdnjs/
 
-RUN bash wget-urls.sh
+RUN bash wget-urls.sh urls.txt
 
 COPY wikipedia/wget-map.sh /home/wikipedia/
 

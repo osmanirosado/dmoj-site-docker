@@ -11,4 +11,4 @@
 # -P prefix
 # Set directory prefix to prefix.  The directory prefix is the directory where all other files and subdirectories
 # will be saved to, i.e. the top of the retrieval tree.  The default is . (the current directory).
-wget -P downloads -nH -x -i urls.txt
+wget -P downloads -nH -x -i "$1"

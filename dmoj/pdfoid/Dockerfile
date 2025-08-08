@@ -29,7 +29,7 @@ COPY --from=temporal /home/chromedriver/ /opt/chromedriver/
 
 # chrome dependencies
 COPY chrome-deps-install.sh /home/
-RUN bash /home/chrome-deps-install.sh
+RUN bash /home/chrome-deps-install.sh /opt/chrome/deb.deps
 
 # exiftool dependency
 RUN apt-get update && apt-get install -y --no-install-recommends libimage-exiftool-perl && rm -rf /var/lib/apt/lists/*

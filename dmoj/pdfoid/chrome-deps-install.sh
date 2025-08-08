@@ -4,6 +4,6 @@ apt-get update
 
 while read pkg; do
   apt-get satisfy -y --no-install-recommends "${pkg}";
-done < /opt/chrome/deb.deps;
+done < "$1";
 
 rm -rf /var/lib/apt/lists/*

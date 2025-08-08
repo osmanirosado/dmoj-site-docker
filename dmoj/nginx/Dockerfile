@@ -1,4 +1,6 @@
-FROM bash:5.3 as temporal
+FROM debian:12-slim as temporal
+
+RUN apt-get update && apt-get install -y wget && apt-get clean
 
 COPY cdnjs/urls.txt /home/cdnjs/
 COPY cdnjs/wget-urls.sh /home/cdnjs/

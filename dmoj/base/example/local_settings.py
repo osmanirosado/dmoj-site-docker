@@ -279,6 +279,38 @@ LOGGING = {
             'backupCount': 10,
             'formatter': 'file',
         },
+        'user': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/dmoj/dmoj-user.log',
+            'maxBytes': 10 * 1024 * 1024,
+            'backupCount': 10,
+            'formatter': 'file',
+        },
+        'problem_pdf': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/dmoj/dmoj-problem-pdf.log',
+            'maxBytes': 10 * 1024 * 1024,
+            'backupCount': 10,
+            'formatter': 'file',
+        },
+        'html': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/dmoj/dmoj-html.log',
+            'maxBytes': 10 * 1024 * 1024,
+            'backupCount': 10,
+            'formatter': 'file',
+        },
+        'mail_activate': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/dmoj/dmoj-mail-activate.log',
+            'maxBytes': 10 * 1024 * 1024,
+            'backupCount': 10,
+            'formatter': 'file',
+        },
         'mail_admins': {
             'level': 'ERROR',
             'class': 'dmoj.throttle_mail.ThrottledEmailHandler',
@@ -299,6 +331,26 @@ LOGGING = {
         # Judging logs as received by bridged.
         'judge.bridge': {
             'handlers': ['bridge', 'mail_admins'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'judge.user': {
+            'handlers': ['user'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'judge.problem.pdf': {
+            'handlers': ['problem_pdf'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'judge.html': {
+            'handlers': ['html'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'judge.mail.activate': {
+            'handlers': ['mail_activate'],
             'level': 'INFO',
             'propagate': True,
         },

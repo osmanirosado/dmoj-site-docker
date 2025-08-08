@@ -12,7 +12,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         texlive-binaries texlive-latex-base texlive-latex-extra texlive-latex-recommended \
         texlive-pictures texlive-pstricks librsvg2-bin xxd imagemagick dvisvgm && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get clean
 
 COPY --from=temporal /home/texoid/ /home/texoid/
 

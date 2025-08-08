@@ -10,7 +10,7 @@ RUN apt-get update && \
     curl -sL https://deb.nodesource.com/setup_22.x | bash - && \
     apt-get install -y nodejs && \
     apt-get autoremove -y && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get clean
 
 # node modules
 RUN npm install -g sass postcss-cli postcss autoprefixer

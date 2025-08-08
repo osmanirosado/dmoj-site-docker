@@ -6,4 +6,4 @@ while read pkg; do
   apt-get satisfy -y --no-install-recommends "${pkg}";
 done < "$1";
 
-rm -rf /var/lib/apt/lists/*
+apt-get clean

@@ -31,6 +31,10 @@ COPY --from=temporal /home/chromedriver/ /opt/chromedriver/
 COPY chrome-deps-install.sh /home/
 RUN bash /home/chrome-deps-install.sh /opt/chrome/deb.deps
 
+# chrome test
+RUN /opt/chrome/chrome --version
+RUN /opt/chromedriver/chromedriver --version
+
 # exiftool dependency
 RUN apt-get update && apt-get install -y --no-install-recommends libimage-exiftool-perl && apt-get clean
 

@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # test file existence
-[ -e "$1" ] || exit 1
+[ -e "$1" ] || echo "[Error] File not found $1" && exit 1
 # test file non zero length
-[ -n "$1" ] || exit 2
+[ -n "$1" ] || echo "[Error] Empty file $1" && exit 2
 
 apt-get update
 

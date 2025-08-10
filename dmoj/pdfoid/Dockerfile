@@ -1,7 +1,7 @@
 FROM bash:5.3 AS temporal
 
 ARG STORAGE_GOOGLE_APIS=nexus.uclv.edu.cu/repository/storage.googleapis.com
-ARG CHROME_RELEASE=128.0.6613.137
+ARG CHROME_RELEASE=123.0.6309.0
 
 WORKDIR /home
 
@@ -29,7 +29,7 @@ COPY --from=temporal /home/chromedriver/ /opt/chromedriver/
 
 # chrome dependencies
 COPY chrome-deps-install.sh /home/
-RUN bash /home/chrome-deps-install.sh /opt/chrome/deb.deps
+RUN bash /home/chrome-deps-install.sh
 
 # chrome test
 RUN /opt/chrome/chrome --version

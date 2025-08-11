@@ -39,6 +39,9 @@ RUN /opt/chromedriver/chromedriver --version
 # exiftool dependency
 RUN apt-get update && apt-get install -y --no-install-recommends libimage-exiftool-perl && apt-get clean
 
+# fonts
+RUN apt-get update && apt-get install -y --no-install-recommends fonts-liberation fonts-noto && apt-get clean
+
 WORKDIR /home
 
 COPY --from=temporal /home/pdfoid/ /home/pdfoid/

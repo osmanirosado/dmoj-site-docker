@@ -29,7 +29,8 @@ COPY --from=temporal /home/chromedriver/ /opt/chromedriver/
 
 # chrome dependencies
 COPY chrome-deps-install.sh /home/
-RUN bash /home/chrome-deps-install.sh
+COPY deb.deps /home/
+RUN bash /home/chrome-deps-install.sh /home/deb.deps
 
 # chrome test
 RUN /opt/chrome/chrome --version

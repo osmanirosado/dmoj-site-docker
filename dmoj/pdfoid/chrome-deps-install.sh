@@ -8,7 +8,7 @@
 apt-get update
 
 while read pkg; do
-  apt-get satisfy -y "${pkg}" || exit 3;
+  apt-get satisfy -y --no-install-recommends "${pkg}" || exit 3;
 done < "$1";
 
 apt-get clean

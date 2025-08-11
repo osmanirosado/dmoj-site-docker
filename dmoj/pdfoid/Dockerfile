@@ -50,7 +50,7 @@ RUN pip3 install -e .
 
 RUN useradd pdfoid
 
-# USER pdfoid
+USER pdfoid
 
 ENV CHROME_PATH=/opt/chrome/chrome
 ENV CHROMEDRIVER_PATH=/opt/chromedriver/chromedriver

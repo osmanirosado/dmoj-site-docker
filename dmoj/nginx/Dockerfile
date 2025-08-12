@@ -17,4 +17,6 @@ FROM nginx:stable
 COPY --from=temporal /home/cdnjs/downloads/ /usr/share/nginx/cdnjs/
 COPY --from=temporal /home/wikipedia/downloads/ /usr/share/nginx/wikipedia/
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/conf.d/default.conf
+
+COPY nginx.conf /etc/nginx/conf.d/nginx.conf

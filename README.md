@@ -11,12 +11,11 @@ Clone the repository:
 ```sh
 $ git clone https://github.com/Ninjaclasher/dmoj-docker
 $ cd dmoj-docker
-$ git submodule update --init --recursive
 $ cd dmoj
 ```
 From now on, it is assumed you are in the `dmoj` directory.
 
-Initialize the setup by moving the configuration files into the submodule and by creating the necessary directories:
+Initialize the setup by moving the configuration files and by creating the necessary directories:
 ```sh
 $ ./scripts/initialize
 ```

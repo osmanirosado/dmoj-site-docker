@@ -26,7 +26,7 @@ FROM python:3.11-slim AS base
 # system dependencies
 RUN apt-get update && \
     apt-get install -y \
-        git gcc g++ make python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev gettext curl wget \
+        git gcc g++ make build-essential python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev gettext curl wget \
         pkgconf debconf-utils mariadb-client libmariadb-dev && \
     apt-get autoremove -y && \
     apt-get clean

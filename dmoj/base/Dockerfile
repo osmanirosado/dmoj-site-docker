@@ -1,3 +1,11 @@
+FROM bash:5.3 AS temporal
+
+WORKDIR /home
+
+# chrome
+RUN wget "https://github.com/DMOJ/online-judge/archive/refs/heads/master.zip"
+RUN unzip master.zip && mv online-judge-master online-judge
+
 FROM node:22-slim AS maker
 
 WORKDIR /home
@@ -6,7 +14,7 @@ WORKDIR /home
 RUN npm install -g sass postcss-cli postcss autoprefixer
 
 # code
-COPY repo /home/code
+COPY --from=temporal /home/online-judge /home/code
 
 WORKDIR /home/code
 
@@ -24,7 +32,7 @@ RUN apt-get update && \
     apt-get clean
 
 # application requirements
-COPY repo/requirements.txt /root
+COPY --from=temporal /home/online-judge/requirements.txt /root
 RUN pip install --no-cache-dir -r /root/requirements.txt
 
 # addicional packages
@@ -34,10 +42,10 @@ RUN pip install --no-cache-dir pymysql mysqlclient django-redis redis websocket-
 COPY --from=maker /home/code /opt/dmoj/code
 
 # uwsgi config
-COPY base/uwsgi.ini /opt/dmoj
+COPY uwsgi.ini /opt/dmoj
 
 # site settings
-COPY base/local_settings.py /opt/dmoj/code/dmoj
+COPY local_settings.py /opt/dmoj/code/dmoj
 
 WORKDIR /opt/dmoj/code
 
@@ -57,3 +65,21 @@ EXPOSE 9999
 EXPOSE 9998
 
 CMD python /opt/dmoj/code/manage.py runbridged
+
+FROM node:22-slim AS wsevent
+
+WORKDIR /home
+
+RUN npm install qu ws simplesets
+
+# code
+COPY --from=temporal /home/online-judge/websocket /home/code/websocket
+
+# config
+COPY config.js /home/code/websocket
+
+EXPOSE 15100
+EXPOSE 15101
+EXPOSE 15102
+
+CMD node /home/code/websocket/daemon.js

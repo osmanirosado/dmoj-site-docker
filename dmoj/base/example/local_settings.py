@@ -143,7 +143,7 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSto
 SITE_NAME = 'DMOJ'
 SITE_LONG_NAME = 'DMOJ: Modern Online Judge'
 SITE_ADMIN_EMAIL = 'admin@example.com'
-TERMS_OF_SERVICE_URL = None
+TERMS_OF_SERVICE_URL = f'//{HOST}/tos/'  # Use a flatpage.
 
 ## Bridge controls.
 # The judge connection address and port; where the judges will connect to the site.

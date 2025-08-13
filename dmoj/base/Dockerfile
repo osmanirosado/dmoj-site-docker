@@ -40,10 +40,10 @@ RUN apt-get update && \
 
 # application requirements
 COPY --from=temporal /home/online-judge/requirements.txt /root
-RUN pip install --no-cache-dir -r /root/requirements.txt
+RUN pip3 install --no-cache-dir -r /root/requirements.txt
 
 # addicional packages
-RUN pip install --no-cache-dir pymysql mysqlclient django-redis redis websocket-client uwsgi
+RUN pip3 install --no-cache-dir pymysql mysqlclient django-redis redis websocket-client uwsgi
 
 # code
 COPY --from=maker /home/code /opt/dmoj/code

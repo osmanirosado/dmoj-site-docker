@@ -21,4 +21,4 @@ WORKDIR /home/texoid
 RUN pip3 install -e .
 
 EXPOSE 8886
-CMD python texoid --address=texoid --port=8886
+CMD python3 texoid --address=texoid --port=8886

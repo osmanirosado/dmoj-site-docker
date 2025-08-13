@@ -71,7 +71,7 @@ FROM base AS bridged
 EXPOSE 9999
 EXPOSE 9998
 
-CMD python /opt/dmoj/code/manage.py runbridged
+CMD python3 /opt/dmoj/code/manage.py runbridged
 
 FROM node:22-slim AS wsevent
 

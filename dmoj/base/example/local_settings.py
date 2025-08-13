@@ -311,6 +311,14 @@ LOGGING = {
             'backupCount': 10,
             'formatter': 'file',
         },
+        'event_server': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/dmoj/dmoj-event-socket-server.log',
+            'maxBytes': 10 * 1024 * 1024,
+            'backupCount': 10,
+            'formatter': 'file',
+        },
         'mail_admins': {
             'level': 'ERROR',
             'class': 'dmoj.throttle_mail.ThrottledEmailHandler',
@@ -351,6 +359,11 @@ LOGGING = {
         },
         'judge.mail.activate': {
             'handlers': ['mail_activate'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'event_socket_server': {
+            'handlers': ['event_server'],
             'level': 'INFO',
             'propagate': True,
         },

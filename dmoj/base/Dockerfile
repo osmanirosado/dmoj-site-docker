@@ -2,9 +2,14 @@ FROM bash:5.3 AS temporal
 
 WORKDIR /home
 
-# chrome
+# online judge code
 RUN wget "https://github.com/DMOJ/online-judge/archive/refs/heads/master.zip"
-RUN unzip master.zip && mv online-judge-master online-judge
+RUN unzip master.zip && rm master.zip && mv online-judge-master online-judge
+
+# online judge assets
+# See https://github.com/DMOJ/online-judge/blob/master/.gitmodules
+RUN wget "https://github.com/DMOJ/site-assets/archive/refs/heads/master.zip"
+RUN unzip master.zip && rm master.zip && mv site-assets-master online-judge/resources/libs
 
 FROM node:22-slim AS maker
 

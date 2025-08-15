@@ -98,7 +98,6 @@ services:
     image: dmoj-wsevent
     init: true
     restart: unless-stopped
-    env_file: [env/db.env, env/site.env]
     networks: [site, nginx]
   nginx:
     build:

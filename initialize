@@ -1,7 +1,7 @@
 #!/bin/bash
-cd $(dirname $(dirname $0)) || exit
 
-#mkdir -p problems media
+cd "$(dirname "$0")" || exit
+cd dmoj || exit
 
 cp core/example/uwsgi.ini core/
 cp core/example/local_settings.py core/

@@ -9,15 +9,15 @@ First, [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docke
 
 Clone the repository:
 ```sh
-$ git clone https://github.com/Ninjaclasher/dmoj-docker
-$ cd dmoj-docker
-$ cd dmoj
+git clone git@git.uclv.edu.cu:dmoj/dmoj-site-docker.git
+cd dmoj-site-docker
 ```
 From now on, it is assumed you are in the `dmoj` directory.
 
 Initialize the setup by moving the configuration files and by creating the necessary directories:
 ```sh
-$ ./scripts/initialize
+bash initialize
+cd dmoj
 ```
 
 Copy environment files from `dmoj/template` to `dmoj/env` and configure the environment variables.
@@ -26,29 +26,29 @@ Also, configure the `server_name` directive in `dmoj/nginx/conf.d/nginx.conf`.
 
 Next, build the images:
 ```sh
-$ docker compose build
+docker compose build
 ```
 
 Start up the site, so you can perform the initial migrations and generate the static files:
 ```sh
-$ docker compose up -d site
+docker compose up -d site
 ```
 
 You will need to generate the schema for the database, since it is currently empty:
 ```sh
-$ ./scripts/migrate
+./scripts/migrate
 ```
 
 You will also need to generate the static files:
 ```
-$ ./scripts/copy_static
+./scripts/copy_static
 ```
 
 Finally, the DMOJ comes with fixtures so that the initial install is not blank. They can be loaded with the following commands:
 ```sh
-$ ./scripts/manage.py loaddata navbar
-$ ./scripts/manage.py loaddata language_small
-$ ./scripts/manage.py loaddata demo
+./scripts/manage.py loaddata navbar
+./scripts/manage.py loaddata language_small
+./scripts/manage.py loaddata demo
 ```
 
 ## Usage
@@ -61,13 +61,13 @@ $ docker compose up -d
 ### Migrating
 As the DMOJ site is a Django app, you may need to migrate whenever you update. Assuming the site container is running, running the following command should suffice:
 ```sh
-$ ./scripts/migrate
+./scripts/migrate
 ```
 
 ### Managing Static Files
 If your static files ever change, you will need to rebuild them:
 ```
-$ ./scripts/copy_static
+./scripts/copy_static
 ```
 
 ### Updating The Site
@@ -75,13 +75,13 @@ Updating various sections of the site requires different images to be rebuilt.
 
 If any prerequisites were modified, you will need to rebuild most of the images:
 ```sh
-$ docker compose up -d --build site celery bridged wsevent
+docker compose up -d --build site celery bridged wsevent
 ```
 If the static files are modified, read the section on [Managing Static Files](#managing-static-files).
 
 If only the source code is modified, a restart is sufficient:
 ```sh
-$ docker compose restart site celery bridged wsevent
+docker compose restart site celery bridged wsevent
 ```
 
 ### Multiple Nginx Instances

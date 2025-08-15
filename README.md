@@ -21,7 +21,7 @@ cd dmoj
 ```
 
 Copy environment files from `dmoj/template` to `dmoj/env` and configure the environment variables.
-In particular, set the MYSQL passwords in `mysql.env` and `mysql-admin.env`, and the host and secret key in `site.env`.
+In particular, set the MYSQL passwords in `db.env` and `db-admin.env`, and the host and secret key in `site.env`.
 Also, configure the `server_name` directive in `dmoj/nginx/conf.d/nginx.conf`.
 
 Next, build the images:

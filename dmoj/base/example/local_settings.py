@@ -116,6 +116,8 @@ ADMINS = (
 # The sender for the aforementioned emails.
 SERVER_EMAIL = 'DMOJ: Modern Online Judge <errors@dmoj.ca>'
 
+# Default from email
+DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
 ################################################
 ########## Static files configuration ##########

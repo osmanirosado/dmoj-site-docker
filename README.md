@@ -46,9 +46,9 @@ bash copy_static
 
 Finally, the DMOJ comes with fixtures so that the initial install is not blank. They can be loaded with the following commands:
 ```sh
-./scripts/manage.py loaddata navbar
-./scripts/manage.py loaddata language_small
-./scripts/manage.py loaddata demo
+bash manage loaddata navbar
+bash manage loaddata language_small
+bash manage loaddata demo
 ```
 
 ## Usage

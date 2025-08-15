@@ -36,7 +36,7 @@ docker compose up -d site
 
 You will need to generate the schema for the database, since it is currently empty:
 ```sh
-./scripts/migrate
+bash migrate
 ```
 
 You will also need to generate the static files:
@@ -61,7 +61,7 @@ $ docker compose up -d
 ### Migrating
 As the DMOJ site is a Django app, you may need to migrate whenever you update. Assuming the site container is running, running the following command should suffice:
 ```sh
-./scripts/migrate
+bash migrate
 ```
 
 ### Managing Static Files

@@ -40,8 +40,8 @@ You will need to generate the schema for the database, since it is currently emp
 ```
 
 You will also need to generate the static files:
-```
-./scripts/copy_static
+```sh
+bash copy_static
 ```
 
 Finally, the DMOJ comes with fixtures so that the initial install is not blank. They can be loaded with the following commands:
@@ -66,8 +66,8 @@ As the DMOJ site is a Django app, you may need to migrate whenever you update. A
 
 ### Managing Static Files
 If your static files ever change, you will need to rebuild them:
-```
-./scripts/copy_static
+```sh
+bash copy_static
 ```
 
 ### Updating The Site

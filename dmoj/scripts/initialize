@@ -3,7 +3,7 @@ cd $(dirname $(dirname $0)) || exit
 
 #mkdir -p problems media
 
-cp base/example/uwsgi.ini base/
-cp base/example/local_settings.py base/
-cp base/example/config.js base/
+cp core/example/uwsgi.ini core/
+cp core/example/local_settings.py core/
+cp core/example/config.js core/
 cp nginx/example/nginx.conf nginx/

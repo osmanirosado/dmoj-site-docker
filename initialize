@@ -1,9 +1,42 @@
 #!/bin/bash
 
 cd "$(dirname "$0")" || exit
-cd dmoj || exit
 
-cp core/example/uwsgi.ini core/
-cp core/example/local_settings.py core/
-cp core/example/config.js core/
-cp nginx/example/nginx.conf nginx/
+copy_if_not_exits() {
+  local sample_file="$1"
+  local real_file="$2"
+
+  if [[ "${real_file: -1}" == "/" ]]; then
+        real_file="${real_file%/}"
+  fi
+
+  if [ -d "$real_file" ]
+  then
+    real_file="$real_file/$(basename "$sample_file")"
+  fi
+
+  if [ -e "$real_file" ]
+  then
+    echo "Config file exists: '$real_file'"
+  else
+    echo "Copy config file '$sample_file' to '$real_file'"
+    cp "$sample_file" "$real_file"
+  fi
+}
+
+# uwsgi
+copy_if_not_exits example/uwsgi.ini dmoj/core/
+
+# django
+copy_if_not_exits example/local_settings.py dmoj/core/
+
+# web socket event
+copy_if_not_exits example/config.js dmoj/core/
+
+# nginx
+copy_if_not_exits example/nginx.conf dmoj/nginx/
+
+# environment
+copy_if_not_exits example/env/mysql.env dmoj/env/
+copy_if_not_exits example/env/mysql-admin.env dmoj/env/
+copy_if_not_exits example/env/site.env dmoj/env/

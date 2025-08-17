@@ -40,10 +40,10 @@ CACHES = {
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE', ''),
-        'USER': os.environ.get('MYSQL_USER', ''),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD', ''),
-        'HOST': os.environ.get('MYSQL_HOST', 'db'),
+        'NAME': os.environ.get('MARIADB_DATABASE', ''),
+        'USER': os.environ.get('MARIADB_USER', ''),
+        'PASSWORD': os.environ.get('MARIADB_PASSWORD', ''),
+        'HOST': os.environ.get('MARIADB_HOST', 'db'),
         'OPTIONS': {
             'charset': 'utf8mb4',
             'sql_mode': 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION',

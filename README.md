@@ -34,14 +34,14 @@ Start up the site, so you can perform the initial migrations and generate the st
 docker compose up -d site
 ```
 
-You will need to generate the schema for the database, since it is currently empty:
-```sh
-bash migrate
-```
-
 You will also need to generate the static files:
 ```sh
 bash copy_static
+```
+
+You will need to generate the schema for the database, since it is currently empty:
+```sh
+bash migrate
 ```
 
 Finally, the DMOJ comes with fixtures so that the initial install is not blank. They can be loaded with the following commands:

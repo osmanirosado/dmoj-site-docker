@@ -2,7 +2,7 @@ name: dmoj
 
 services:
   db:
-    image: mariadb
+    image: mariadb:11.8
     restart: always
     volumes:
       - /var/opt/lib/dmoj/db/:/var/lib/mysql/

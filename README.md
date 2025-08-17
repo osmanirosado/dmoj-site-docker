@@ -35,7 +35,7 @@ docker compose up -d site
 ```
 
 Start a bash shell inside the site container
-```shell
+```sh
 docker compose exec site bash
 ```
 
@@ -72,6 +72,23 @@ $ docker compose up -d
 ```
 
 ## Notes
+
+### Database
+
+Bash session on the database container
+```sh
+docker compose exec db bash
+```
+
+Maria DB access as root
+```sh
+mariadb -u root -p"$MARIADB_ROOT_PASSWORD"
+```
+
+Maria DB access to default database
+```sh
+mariadb -u "$MARIADB_USER" -p"$MARIADB_PASSWORD" "$MARIADB_DATABASE"
+```
 
 ### Migrating
 As the DMOJ site is a Django app, you may need to migrate whenever you update. 

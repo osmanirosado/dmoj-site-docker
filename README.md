@@ -34,21 +34,36 @@ Start up the site, so you can perform the initial migrations and generate the st
 docker compose up -d site
 ```
 
+Start a bash shell inside the site container
+```shell
+docker compose exec site bash
+```
+
 You will also need to generate the static files:
 ```sh
-bash copy_static
+# static
+python3 manage.py collectstatic
+
+# messages
+python3 manage.py compilemessages
+
+# jsi18n
+python3 manage.py compilejsi18n
+
+# assets
+cp 502.html logo.png robots.txt /var/opt/lib/dmoj/assets/
 ```
 
 You will need to generate the schema for the database, since it is currently empty:
 ```sh
-bash migrate
+python3 manage.py migrate
 ```
 
 Finally, the DMOJ comes with fixtures so that the initial install is not blank. They can be loaded with the following commands:
 ```sh
-bash manage loaddata navbar
-bash manage loaddata language_small
-bash manage loaddata demo
+python3 manage.py loaddata navbar
+python3 manage.py loaddata language_small
+python3 manage.py loaddata demo # optional
 ```
 
 ## Usage
@@ -59,7 +74,8 @@ $ docker compose up -d
 ## Notes
 
 ### Migrating
-As the DMOJ site is a Django app, you may need to migrate whenever you update. Assuming the site container is running, running the following command should suffice:
+As the DMOJ site is a Django app, you may need to migrate whenever you update. 
+Assuming the site container is running, running the following command should suffice:
 ```sh
 bash migrate
 ```

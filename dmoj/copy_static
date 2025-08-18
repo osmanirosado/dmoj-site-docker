@@ -1,9 +1,0 @@
-#!/bin/bash
-
-cd "$(dirname "$0")" || exit
-
-docker compose exec $COMPOSE_EXEC_FLAGS site /bin/bash -c "\
-    python3 manage.py collectstatic --noinput && \
-    python3 manage.py compilemessages && \
-    python3 manage.py compilejsi18n && \
-    cp 502.html logo.png robots.txt /var/opt/lib/dmoj/assets/ "

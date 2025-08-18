@@ -1,45 +1,45 @@
-DMOJ Docker [![Build Status](https://github.com/Ninjaclasher/dmoj-docker/workflows/Build%20Docker%20Images/badge.svg)](https://github.com/Ninjaclasher/dmoj-docker/actions/)
-=====
+# DMOJ Site Docker
 
-This repository contains the Docker files to run a clone of the [DMOJ site](https://github.com/DMOJ/online-judge). It configures some additional services, such as mathoid, pdfoid, and texoid.
+This repository contains the Docker files to run a clone of the [DMOJ site](https://github.com/DMOJ/online-judge).
+It configures some additional services, such as mathoid, pdfoid, and texoid.
 
 ## Installation
 
-First, [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) must be installed. Installation instructions can be found on their respective websites.
+First, [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) must be installed. 
+Installation instructions can be found on their respective websites.
 
 Clone the repository:
 ```sh
 git clone git@git.uclv.edu.cu:dmoj/dmoj-site-docker.git
 cd dmoj-site-docker
 ```
-From now on, it is assumed you are in the `dmoj` directory.
 
-Initialize the setup by moving the configuration files and by creating the necessary directories:
+Initialize the setup by coping the configuration and environment files
 ```sh
 bash initialize
 cd dmoj
 ```
+From now on, it is assumed you are in the `dmoj` directory.
 
-Copy environment files from `dmoj/template` to `dmoj/env` and configure the environment variables.
-In particular, set the MYSQL passwords in `db.env` and `db-admin.env`, and the host and secret key in `site.env`.
-Also, configure the `server_name` directive in `dmoj/nginx/conf.d/nginx.conf`.
+Configure the environment variables in the files copied to `dmoj/env` from `example/env`.
+In particular, set the MariaDB passwords in `db.env` and `db-admin.env`, and the host and secret key in `site.env`.
 
 Next, build the images:
 ```sh
 docker compose build
 ```
 
-Start up the site, so you can perform the initial migrations and generate the static files:
+Start up the site, so you can generate the static files and perform the initial migrations:
 ```sh
 docker compose up -d site
 ```
 
-Start a bash shell inside the site container
+Start a shell inside the site container
 ```sh
 docker compose exec site bash
 ```
 
-You will also need to generate the static files:
+You will need to generate the static files:
 ```sh
 # static
 python3 manage.py collectstatic
@@ -50,7 +50,7 @@ python3 manage.py compilemessages
 # jsi18n
 python3 manage.py compilejsi18n
 
-# assets
+# other assets
 cp 502.html logo.png robots.txt /var/opt/lib/dmoj/assets/
 ```
 
@@ -59,7 +59,8 @@ You will need to generate the schema for the database, since it is currently emp
 python3 manage.py migrate
 ```
 
-Finally, the DMOJ comes with fixtures so that the initial install is not blank. They can be loaded with the following commands:
+Finally, the DMOJ comes with fixtures so that the initial installation is not blank. 
+They can be loaded with the following commands:
 ```sh
 python3 manage.py loaddata navbar
 python3 manage.py loaddata language_small
@@ -67,13 +68,13 @@ python3 manage.py loaddata demo # optional
 ```
 
 ## Usage
-```
+
+Start up all services
+```sh
 $ docker compose up -d
 ```
 
-## Notes
-
-### Database
+## Database
 
 Bash session on the database container
 ```sh
@@ -90,36 +91,24 @@ Maria DB access to default database
 mariadb -u "$MARIADB_USER" -p"$MARIADB_PASSWORD" "$MARIADB_DATABASE"
 ```
 
-### Migrating
-As the DMOJ site is a Django app, you may need to migrate whenever you update. 
-Assuming the site container is running, running the following command should suffice:
-```sh
-bash migrate
-```
-
-### Managing Static Files
-If your static files ever change, you will need to rebuild them:
-```sh
-bash copy_static
-```
-
-### Updating The Site
+## Updating The Site
 Updating various sections of the site requires different images to be rebuilt.
 
 If any prerequisites were modified, you will need to rebuild most of the images:
 ```sh
 docker compose up -d --build site celery bridged wsevent
 ```
-If the static files are modified, read the section on [Managing Static Files](#managing-static-files).
+If the static files are modified, you will need to generate the static files.
 
 If only the source code is modified, a restart is sufficient:
 ```sh
 docker compose restart site celery bridged wsevent
 ```
 
-### Multiple Nginx Instances
+## Multiple Nginx Instances
 
-The `docker-compose.yml` configures Nginx to publish to port 80. If you have another Nginx instance on your host machine, you may want to change the port and proxy pass instead.
+The `compose.yml` configures Nginx to publish to port 8080 on local host. 
+If you have another Nginx instance on your host machine, you may want to change the port and proxy pass instead.
 
 For example, a possible Nginx configuration file on your host machine would be:
 ```
@@ -140,13 +129,12 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
 
-        proxy_pass http://127.0.0.1:10080/;
+        proxy_pass http://127.0.0.1:8080/;
     }
 }
 ```
 
-In this case, the port that the Nginx instance in the Docker container is published to would need to be modified to `10080`.
-
 ## Common Errors
 ### 502 Bad Gateway
-Ensure that you also restart the Nginx container if you restart the site container as Nginx caches DNS queries. Otherwise, Nginx will try to hit the old IP, causing a 502 Bad Gateway. See [this issue](https://github.com/docker/compose/issues/3314) for more information.
+Ensure that you also restart the Nginx container if you restart the site container as Nginx caches DNS queries. 
+Otherwise, Nginx will try to hit the old IP, causing a 502 Bad Gateway. See [this issue](https://github.com/docker/compose/issues/3314) for more information.

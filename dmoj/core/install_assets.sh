@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Usage
-# docker compose exec site bash < core/install_assets.sh
+# docker compose exec -T site bash < core/install_assets.sh
 
 cd /opt/dmoj/code || exit
 

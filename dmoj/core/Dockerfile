@@ -3,7 +3,7 @@ FROM debian:12-slim AS temporal
 WORKDIR /home
 
 # git
-RUN apt-get update && apt-get install -y --no-install-recommends git && apt-get clean
+RUN apt-get update && apt-get install -y git && apt-get clean
 
 # online judge code
 RUN git clone --depth 1 --branch master --single-branch --recurse-submodules --shallow-submodules https://github.com/DMOJ/online-judge.git

@@ -43,10 +43,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends libimage-exifto
 RUN apt-get update && apt-get install -y --no-install-recommends fonts-liberation fonts-noto && apt-get clean
 
 # add contrib and non-free components to debian sources
-RUN sed -i 's/^Components: main$/& contrib non-free non-free-firmware/' /etc/apt/sources.list.d/debian.sources
+#RUN sed -i 's/^Components: main$/& contrib non-free non-free-firmware/' /etc/apt/sources.list.d/debian.sources
 
 # microsoft fonts
-RUN apt-get update && apt-get install -y --no-install-recommends ttf-mscorefonts-installer && apt-get clean
+#RUN apt-get update && apt-get install -y --no-install-recommends ttf-mscorefonts-installer && apt-get clean
 
 WORKDIR /home
 

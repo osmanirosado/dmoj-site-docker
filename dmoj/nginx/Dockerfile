@@ -1,4 +1,4 @@
-FROM debian:12-slim as temporal
+FROM debian:12-slim AS temporal
 
 RUN apt-get update && apt-get install -y wget && apt-get clean
 

@@ -2,15 +2,15 @@ FROM bash:5.3 AS temporal
 
 WORKDIR /home
 
+# git
+RUN apt-get update && apt-get install -y --no-install-recommends git && apt-get clean
+
 # online judge code
-RUN wget "https://github.com/DMOJ/online-judge/archive/refs/heads/master.zip"
-RUN unzip master.zip && rm master.zip && mv online-judge-master online-judge
+RUN git clone --depth 1 --branch master --single-branch --recurse-submodules --shallow-submodules https://github.com/DMOJ/online-judge.git
 RUN ls online-judge/
 
 # online judge assets
 # See https://github.com/DMOJ/online-judge/blob/master/.gitmodules
-RUN wget "https://github.com/DMOJ/site-assets/archive/refs/heads/master.zip"
-RUN unzip master.zip && rm master.zip && mv site-assets-master/* online-judge/resources/libs/ && rm -r site-assets-master
 RUN ls online-judge/resources/libs/
 
 FROM node:22-slim AS maker

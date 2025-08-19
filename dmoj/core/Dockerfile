@@ -1,4 +1,4 @@
-FROM bash:5.3 AS temporal
+FROM debian:12-slim as temporal
 
 WORKDIR /home
 

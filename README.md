@@ -71,7 +71,7 @@ python3 manage.py loaddata demo # optional
 
 Start up all services
 ```sh
-$ docker compose up -d
+docker compose up -d
 ```
 
 ## Database

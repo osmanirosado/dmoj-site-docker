@@ -14,9 +14,9 @@ RUN apt-get update && \
         texlive-pictures texlive-pstricks librsvg2-bin xxd imagemagick dvisvgm && \
     apt-get clean
 
-COPY --from=temporal /home/texoid/ /home/texoid/
+COPY --from=temporal /home/texoid/ /opt/texoid/
 
-WORKDIR /home/texoid
+WORKDIR /opt/texoid
 
 RUN pip3 install -e .
 

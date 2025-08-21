@@ -1,13 +1,13 @@
 FROM node:22-slim
 
-WORKDIR /home/node
+WORKDIR /opt/mathoid
 
 RUN npm install mathoid@0.7.6
 
-COPY config.yaml /home/node/node_modules/mathoid/
+COPY config.yaml /opt/mathoid/node_modules/mathoid/
 
 EXPOSE 8888
 
-WORKDIR /home/node/node_modules/mathoid
+WORKDIR /opt/mathoid/node_modules/mathoid
 
-CMD node /home/node/node_modules/mathoid/server.js
+CMD node /opt/mathoid/node_modules/mathoid/server.js

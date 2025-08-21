@@ -48,11 +48,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends fonts-liberatio
 # microsoft fonts
 #RUN apt-get update && apt-get install -y --no-install-recommends ttf-mscorefonts-installer && apt-get clean
 
-WORKDIR /home
+# pdfoid code
+COPY --from=temporal /home/pdfoid/ /opt/pdfoid/
 
-COPY --from=temporal /home/pdfoid/ /home/pdfoid/
-
-WORKDIR /home/pdfoid
+WORKDIR /opt/pdfoid
 
 RUN pip3 install selenium==4.9.1
 RUN pip3 install -e .

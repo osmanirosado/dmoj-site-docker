@@ -25,13 +25,13 @@ copy_if_not_exits() {
 }
 
 # uwsgi
-copy_if_not_exits example/uwsgi.ini dmoj/core/
+copy_if_not_exits example/uwsgi.ini dmoj/site/
 
 # django
-copy_if_not_exits example/local_settings.py dmoj/core/
+copy_if_not_exits example/local_settings.py dmoj/site/
 
 # web socket event
-copy_if_not_exits example/config.js dmoj/core/
+copy_if_not_exits example/config.js dmoj/site/
 
 # nginx
 copy_if_not_exits example/nginx.conf dmoj/nginx/

@@ -8,11 +8,13 @@ RUN unzip master.zip && mv texoid-master texoid
 
 FROM python:3.11-slim
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
+RUN <<EOF
+apt-get update
+apt-get install -y --no-install-recommends \
         texlive-binaries texlive-latex-base texlive-latex-extra texlive-latex-recommended \
-        texlive-pictures texlive-pstricks librsvg2-bin xxd imagemagick dvisvgm && \
-    apt-get clean
+        texlive-pictures texlive-pstricks librsvg2-bin xxd imagemagick dvisvgm
+apt-get clean
+EOF
 
 COPY --from=temporal /home/texoid/ /opt/texoid/
 

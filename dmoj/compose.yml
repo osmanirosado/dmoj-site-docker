@@ -40,7 +40,7 @@ services:
     networks: [site]
   site:
     build:
-      context: core
+      context: site
       dockerfile: Dockerfile
       target: site
     image: dmoj-site
@@ -60,7 +60,7 @@ services:
     depends_on: [db, redis]
   celery:
     build:
-      context: core
+      context: site
       dockerfile: Dockerfile
       target: celery
     image: dmoj-celery
@@ -75,7 +75,7 @@ services:
     depends_on: [db, redis]
   bridged:
     build:
-      context: core
+      context: site
       dockerfile: Dockerfile
       target: bridged
     image: dmoj-bridged
@@ -92,7 +92,7 @@ services:
     depends_on: [db, redis]
   wsevent:
     build:
-      context: core
+      context: site
       dockerfile: Dockerfile
       target: wsevent
     image: dmoj-wsevent

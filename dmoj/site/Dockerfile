@@ -33,15 +33,15 @@ RUN pip3 install --no-cache-dir -r /root/requirements.txt
 RUN pip3 install --no-cache-dir pymysql mysqlclient django-redis redis websocket-client uwsgi
 
 # code
-COPY --from=maker /home/online-judge /opt/online-judge/code
+COPY --from=maker /home/online-judge /opt/online-judge
 
 # uwsgi config
 COPY uwsgi.ini /opt/online-judge
 
 # site settings
-COPY local_settings.py /opt/online-judge/code/dmoj
+COPY local_settings.py /opt/online-judge/dmoj
 
-WORKDIR /opt/online-judge/code
+WORKDIR /opt/online-judge
 
 FROM base AS site
 
@@ -58,7 +58,7 @@ FROM base AS bridged
 EXPOSE 9999
 EXPOSE 9998
 
-CMD python3 /opt/online-judge/code/manage.py runbridged
+CMD python3 /opt/online-judge/manage.py runbridged
 
 FROM node:22-slim AS wsevent
 
@@ -67,13 +67,13 @@ WORKDIR /opt/online-judge
 RUN npm install qu ws simplesets
 
 # code
-COPY --from=maker /home/online-judge/websocket /opt/online-judge/code/websocket
+COPY --from=maker /home/online-judge/websocket /opt/online-judge/websocket
 
 # config
-COPY config.js /opt/online-judge/code/websocket
+COPY config.js /opt/online-judge/websocket
 
 EXPOSE 15100
 EXPOSE 15101
 EXPOSE 15102
 
-CMD node /opt/online-judge/code/websocket/daemon.js
+CMD node /opt/online-judge/websocket/daemon.js

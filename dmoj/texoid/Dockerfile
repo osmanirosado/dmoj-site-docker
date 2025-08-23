@@ -1,11 +1,3 @@
-FROM bash:5.3 AS temporal
-
-WORKDIR /home
-
-# texoid
-RUN wget https://github.com/DMOJ/texoid/archive/refs/heads/master.zip
-RUN unzip master.zip && mv texoid-master texoid
-
 FROM python:3.11-slim
 
 RUN <<EOF
@@ -16,7 +8,7 @@ apt-get install -y --no-install-recommends \
 apt-get clean
 EOF
 
-COPY --from=temporal /home/texoid/ /opt/texoid/
+ADD https://github.com/DMOJ/texoid.git /opt/texoid/
 
 WORKDIR /opt/texoid
 

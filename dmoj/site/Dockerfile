@@ -1,18 +1,3 @@
-FROM debian:12-slim AS temporal
-
-WORKDIR /home
-
-# git
-RUN apt-get update && apt-get install -y git && apt-get clean
-
-# online judge code
-RUN git clone --depth 1 --branch master --single-branch --recurse-submodules --shallow-submodules https://github.com/DMOJ/online-judge.git
-RUN ls online-judge/
-
-# online judge assets
-# See https://github.com/DMOJ/online-judge/blob/master/.gitmodules
-RUN ls online-judge/resources/libs/
-
 FROM node:22-slim AS maker
 
 WORKDIR /home
@@ -20,10 +5,10 @@ WORKDIR /home
 # node modules
 RUN npm install -g sass postcss-cli postcss autoprefixer
 
-# code
-COPY --from=temporal /home/online-judge /home/code
+# online judge code and judge assets
+ADD https://github.com/DMOJ/online-judge.git /home/online-judge
 
-WORKDIR /home/code
+WORKDIR /home/online-judge
 
 # make styles
 RUN bash make_style.sh
@@ -41,14 +26,14 @@ apt-get clean
 EOF
 
 # application requirements
-COPY --from=temporal /home/online-judge/requirements.txt /root
+COPY --from=maker /home/online-judge/requirements.txt /root
 RUN pip3 install --no-cache-dir -r /root/requirements.txt
 
 # addicional packages
 RUN pip3 install --no-cache-dir pymysql mysqlclient django-redis redis websocket-client uwsgi
 
 # code
-COPY --from=maker /home/code /opt/dmoj/code
+COPY --from=maker /home/online-judge /opt/dmoj/code
 
 # uwsgi config
 COPY uwsgi.ini /opt/dmoj
@@ -82,7 +67,7 @@ WORKDIR /home
 RUN npm install qu ws simplesets
 
 # code
-COPY --from=temporal /home/online-judge/websocket /home/code/websocket
+COPY --from=maker /home/online-judge/websocket /home/code/websocket
 
 # config
 COPY config.js /home/code/websocket

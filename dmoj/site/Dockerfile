@@ -62,18 +62,18 @@ CMD python3 /opt/dmoj/code/manage.py runbridged
 
 FROM node:22-slim AS wsevent
 
-WORKDIR /home
+WORKDIR /opt/dmoj
 
 RUN npm install qu ws simplesets
 
 # code
-COPY --from=maker /home/online-judge/websocket /home/code/websocket
+COPY --from=maker /home/online-judge/websocket /opt/dmoj/code/websocket
 
 # config
-COPY config.js /home/code/websocket
+COPY config.js /opt/dmoj/code/websocket
 
 EXPOSE 15100
 EXPOSE 15101
 EXPOSE 15102
 
-CMD node /home/code/websocket/daemon.js
+CMD node /opt/dmoj/code/websocket/daemon.js

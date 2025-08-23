@@ -17,10 +17,6 @@ RUN unzip chrome-linux64.zip && mv chrome-linux64 chrome
 RUN wget "https://$STORAGE_GOOGLE_APIS/chrome-for-testing-public/$CHROME_RELEASE/linux64/chromedriver-linux64.zip"
 RUN unzip chromedriver-linux64.zip && mv chromedriver-linux64 chromedriver
 
-# pdfoid
-RUN wget 'https://github.com/DMOJ/pdfoid/archive/refs/heads/master.zip'
-RUN unzip master.zip && mv pdfoid-master pdfoid
-
 FROM python:3.11-slim
 
 # chrome
@@ -49,7 +45,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends fonts-liberatio
 #RUN apt-get update && apt-get install -y --no-install-recommends ttf-mscorefonts-installer && apt-get clean
 
 # pdfoid code
-COPY --from=temporal /home/pdfoid/ /opt/pdfoid/
+ADD https://github.com/DMOJ/pdfoid.git /opt/pdfoid/
 
 WORKDIR /opt/pdfoid
 

@@ -72,6 +72,10 @@ COPY --from=maker /home/online-judge/websocket /opt/online-judge/websocket
 # config
 COPY config.js /opt/online-judge/websocket
 
+RUN useradd app
+
+USER app
+
 EXPOSE 15100
 EXPOSE 15101
 EXPOSE 15102

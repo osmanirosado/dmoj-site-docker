@@ -6,7 +6,9 @@ services:
     restart: always
     volumes:
       - db:/var/lib/mysql/
-    env_file: [env/db.env, env/db-admin.env]
+    env_file:
+      - env/db.env
+      - env/db-admin.env
     networks: [db]
   redis:
     image: redis:alpine
@@ -72,7 +74,9 @@ services:
       - media:/var/opt/lib/dmoj/media/
       - problems:/var/opt/lib/dmoj/problems/
       - log:/var/log/dmoj/
-    env_file: [env/db.env, env/site.env]
+    env_file:
+      - env/db.env
+      - env/site.env
     networks: [site, nginx, db]
     depends_on: [db, redis]
   celery:
@@ -87,7 +91,9 @@ services:
       - pdf_cache:/var/cache/dmoj/pdf/
       - data_cache:/var/cache/dmoj/data/
       - log:/var/log/dmoj/
-    env_file: [env/db.env, env/site.env]
+    env_file:
+      - env/db.env
+      - env/site.env
     networks: [site, db]
     depends_on: [db, redis]
   bridged:
@@ -102,7 +108,9 @@ services:
       - pdf_cache:/var/cache/dmoj/pdf/
       - problems:/var/opt/lib/dmoj/problems/
       - log:/var/log/dmoj/
-    env_file: [env/db.env, env/site.env]
+    env_file:
+      - env/db.env
+      - env/site.env
     networks: [site, nginx, db]
     ports:
       - "9999:9999"

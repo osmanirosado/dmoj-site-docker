@@ -43,6 +43,10 @@ COPY local_settings.py /opt/online-judge/dmoj
 
 WORKDIR /opt/online-judge
 
+RUN useradd --uid 1000 --shell=/usr/sbin/nologin dmoj
+
+USER dmoj
+
 FROM base AS site
 
 EXPOSE 8000

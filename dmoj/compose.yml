@@ -41,6 +41,7 @@ services:
   owner:
     image: busybox
     command: "chown -R 1000:1000 /mnt/dmoj/"
+    working_dir: /mnt/dmoj/
     volumes:
       - /var/spool/dmoj/:/mnt/dmoj/spool/
       - assets:/mnt/dmoj/assets/

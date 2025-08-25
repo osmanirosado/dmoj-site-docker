@@ -86,7 +86,9 @@ services:
       - site
       - nginx
       - db
-    depends_on: [db, redis]
+    depends_on:
+      - db
+      - redis
   celery:
     build:
       context: site
@@ -105,7 +107,9 @@ services:
     networks:
       - site
       - db
-    depends_on: [db, redis]
+    depends_on:
+      - db
+      - redis
   bridged:
     build:
       context: site
@@ -127,7 +131,9 @@ services:
       - db
     ports:
       - "9999:9999"
-    depends_on: [db, redis]
+    depends_on:
+      - db
+      - redis
   wsevent:
     build:
       context: site
@@ -156,7 +162,9 @@ services:
       - media:/var/opt/lib/dmoj/media/:ro
     networks:
       - nginx
-    depends_on: [site, wsevent]
+    depends_on:
+      - site
+      - wsevent
 
 networks:
   site:

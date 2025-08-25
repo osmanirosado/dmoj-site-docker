@@ -38,6 +38,21 @@ services:
     init: true
     restart: unless-stopped
     networks: [site]
+  owner:
+    image: busybox
+    command: "chown -R 1000:1000 /mnt/volumes/"
+    volumes:
+      - assets:/mnt/volumes/assets/
+      - pdf_cache:/mnt/volumes/pdf/
+      - data_cache:/mnt/volumes/data/
+      - mathoid_cache:/mnt/volumes/mathoid/
+      - texoid_cache:/mnt/volumes/texoid/
+      - /var/opt/lib/dmoj/media/:/mnt/volumes/media/
+      - /var/opt/lib/dmoj/problems/:/mnt/volumes/problems/
+      - /var/log/dmoj/:/mnt/volumes/log/
+    restart: no
+    profiles:
+      - init
   site:
     build:
       context: site

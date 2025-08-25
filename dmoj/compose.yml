@@ -9,11 +9,13 @@ services:
     env_file:
       - env/db.env
       - env/db-admin.env
-    networks: [db]
+    networks:
+      - db
   redis:
     image: redis:alpine
     restart: always
-    networks: [site]
+    networks:
+      - site
   texoid:
     build:
       context: texoid
@@ -21,7 +23,8 @@ services:
     image: dmoj-texoid
     init: true
     restart: unless-stopped
-    networks: [site]
+    networks:
+      - site
   pdfoid:
     build:
       context: pdfoid
@@ -29,7 +32,8 @@ services:
     image: dmoj-pdfoid
     init: true
     restart: unless-stopped
-    networks: [site]
+    networks:
+      - site
     cap_add:
       - SYS_ADMIN
   mathoid:
@@ -39,7 +43,8 @@ services:
     image: dmoj-mathoid
     init: true
     restart: unless-stopped
-    networks: [site]
+    networks:
+      - site
   owner:
     image: busybox
     command: "chown -R 1000:1000 /mnt/dmoj/"
@@ -77,7 +82,10 @@ services:
     env_file:
       - env/db.env
       - env/site.env
-    networks: [site, nginx, db]
+    networks:
+      - site
+      - nginx
+      - db
     depends_on: [db, redis]
   celery:
     build:
@@ -94,7 +102,9 @@ services:
     env_file:
       - env/db.env
       - env/site.env
-    networks: [site, db]
+    networks:
+      - site
+      - db
     depends_on: [db, redis]
   bridged:
     build:
@@ -111,7 +121,10 @@ services:
     env_file:
       - env/db.env
       - env/site.env
-    networks: [site, nginx, db]
+    networks:
+      - site
+      - nginx
+      - db
     ports:
       - "9999:9999"
     depends_on: [db, redis]
@@ -123,7 +136,9 @@ services:
     image: dmoj-wsevent
     init: true
     restart: unless-stopped
-    networks: [site, nginx]
+    networks:
+      - site
+      - nginx
   nginx:
     build:
       context: nginx
@@ -139,7 +154,8 @@ services:
       - mathoid_cache:/var/cache/dmoj/mathoid/:ro
       - texoid_cache:/var/cache/dmoj/texoid/:ro
       - media:/var/opt/lib/dmoj/media/:ro
-    networks: [nginx]
+    networks:
+      - nginx
     depends_on: [site, wsevent]
 
 networks:

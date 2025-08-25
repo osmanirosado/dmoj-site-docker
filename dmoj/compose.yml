@@ -5,7 +5,7 @@ services:
     image: mariadb:11.8
     restart: always
     volumes:
-      - /var/opt/lib/dmoj/db/:/var/lib/mysql/
+      - db:/var/lib/mysql/
     env_file: [env/db.env, env/db-admin.env]
     networks: [db]
   redis:
@@ -140,6 +140,7 @@ networks:
   nginx:
 
 volumes:
+  db:
   assets:
   media:
   problems:

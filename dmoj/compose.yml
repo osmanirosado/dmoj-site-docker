@@ -51,8 +51,6 @@ services:
       - /var/opt/lib/dmoj/problems/:/mnt/volumes/problems/
       - /var/log/dmoj/:/mnt/volumes/log/
     restart: no
-    profiles:
-      - init
   site:
     build:
       context: site

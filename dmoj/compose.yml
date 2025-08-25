@@ -42,6 +42,7 @@ services:
     image: busybox
     command: "chown -R 1000:1000 /mnt/volumes/"
     volumes:
+      - /var/spool/dmoj/:/mnt/volumes/spool/
       - assets:/mnt/volumes/assets/
       - pdf_cache:/mnt/volumes/pdf/
       - data_cache:/mnt/volumes/data/

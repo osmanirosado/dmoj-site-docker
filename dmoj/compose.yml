@@ -48,7 +48,7 @@ services:
       - mathoid_cache:/mnt/volumes/mathoid/
       - texoid_cache:/mnt/volumes/texoid/
       - media:/mnt/volumes/media/
-      - /var/opt/lib/dmoj/problems/:/mnt/volumes/problems/
+      - problems:/mnt/volumes/problems/
       - /var/log/dmoj/:/mnt/volumes/log/
     restart: no
     profiles:
@@ -68,7 +68,7 @@ services:
       - mathoid_cache:/var/cache/dmoj/mathoid/
       - texoid_cache:/var/cache/dmoj/texoid/
       - media:/var/opt/lib/dmoj/media/
-      - /var/opt/lib/dmoj/problems/:/var/opt/lib/dmoj/problems/
+      - problems:/var/opt/lib/dmoj/problems/
       - /var/log/dmoj/:/var/log/dmoj/
     env_file: [env/db.env, env/site.env]
     networks: [site, nginx, db]
@@ -98,7 +98,7 @@ services:
     restart: unless-stopped
     volumes:
       - pdf_cache:/var/cache/dmoj/pdf/
-      - /var/opt/lib/dmoj/problems/:/var/opt/lib/dmoj/problems/
+      - problems:/var/opt/lib/dmoj/problems/
       - /var/log/dmoj/:/var/log/dmoj/
     env_file: [env/db.env, env/site.env]
     networks: [site, nginx, db]
@@ -140,6 +140,7 @@ networks:
 volumes:
   assets:
   media:
+  problems:
   pdf_cache:
   data_cache:
   mathoid_cache:

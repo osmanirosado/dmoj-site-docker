@@ -14,9 +14,9 @@ WORKDIR /opt/texoid
 
 RUN pip3 install -e .
 
-RUN useradd texoid
+RUN useradd app
 
-USER texoid
+USER app
 
 EXPOSE 8886
 

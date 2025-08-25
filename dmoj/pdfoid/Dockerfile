@@ -52,9 +52,9 @@ WORKDIR /opt/pdfoid
 RUN pip3 install selenium==4.9.1
 RUN pip3 install -e .
 
-RUN useradd pdfoid
+RUN useradd app
 
-USER pdfoid
+USER app
 
 ENV CHROME_PATH=/opt/chrome/chrome
 ENV CHROMEDRIVER_PATH=/opt/chromedriver/chromedriver

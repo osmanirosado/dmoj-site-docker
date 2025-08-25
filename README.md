@@ -29,14 +29,9 @@ Next, build the images:
 docker compose build
 ```
 
-Creates containers without starting them
-```sh
-docker compose up --no-start
-```
-
 Change owner to shared volumes
 ```sh
-docker compose start owner
+docker compose run --rm owner
 ```
 
 Start up the site, so you can generate the static files and perform the initial migrations:

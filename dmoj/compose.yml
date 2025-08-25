@@ -40,17 +40,17 @@ services:
     networks: [site]
   owner:
     image: busybox
-    command: "chown -R 1000:1000 /mnt/volumes/"
+    command: "chown -R 1000:1000 /mnt/dmoj/"
     volumes:
-      - /var/spool/dmoj/:/mnt/volumes/spool/
-      - assets:/mnt/volumes/assets/
-      - pdf_cache:/mnt/volumes/pdf/
-      - data_cache:/mnt/volumes/data/
-      - mathoid_cache:/mnt/volumes/mathoid/
-      - texoid_cache:/mnt/volumes/texoid/
-      - media:/mnt/volumes/media/
-      - problems:/mnt/volumes/problems/
-      - log:/mnt/volumes/log/
+      - /var/spool/dmoj/:/mnt/dmoj/spool/
+      - assets:/mnt/dmoj/assets/
+      - pdf_cache:/mnt/dmoj/pdf/
+      - data_cache:/mnt/dmoj/data/
+      - mathoid_cache:/mnt/dmoj/mathoid/
+      - texoid_cache:/mnt/dmoj/texoid/
+      - media:/mnt/dmoj/media/
+      - problems:/mnt/dmoj/problems/
+      - log:/mnt/dmoj/log/
     restart: no
     profiles:
       - util

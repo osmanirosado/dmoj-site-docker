@@ -96,6 +96,18 @@ Maria DB access to default database
 mariadb -u "$MARIADB_USER" -p"$MARIADB_PASSWORD" "$MARIADB_DATABASE"
 ```
 
+### Backup
+
+Command to back up the `dmoj` database
+```sh
+docker compose exec -T db sh -c 'mariadb-dump -u root -p"$MARIADB_ROOT_PASSWORD" --routines --triggers dmoj' > ~/backups/dmoj_db_backup_2025-08-25.sql
+```
+
+Command to restore the `dmoj` database
+```sh
+docker compose exec -T db sh -c 'mariadb -u root -p"$MARIADB_ROOT_PASSWORD" dmoj' < ~/backups/dmoj_db_backup_2025-08-25.sql
+```
+
 ## Updating The Site
 Updating various sections of the site requires different images to be rebuilt.
 

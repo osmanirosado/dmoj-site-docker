@@ -61,9 +61,6 @@ RUN chmod +x /usr/local/bin/start-script.sh
 # Run the script on container start
 ENTRYPOINT ["/usr/local/bin/start-script.sh"]
 
-# Switch to the non-root user
-USER dmoj
-
 EXPOSE 8000
 
 CMD uwsgi --ini /opt/online-judge/uwsgi.ini

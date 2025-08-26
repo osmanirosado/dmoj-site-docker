@@ -49,6 +49,21 @@ USER dmoj
 
 FROM base AS site
 
+# Copy your script into the container
+COPY start-script.sh /usr/local/bin/start-script.sh
+
+# Make the script executable
+RUN chmod +x /usr/local/bin/start-script.sh
+
+# Switch to root to run the script
+USER root
+
+# Run the script on container start
+ENTRYPOINT ["/usr/local/bin/start-script.sh"]
+
+# Switch to the non-root user
+USER dmoj
+
 EXPOSE 8000
 
 CMD uwsgi --ini /opt/online-judge/uwsgi.ini

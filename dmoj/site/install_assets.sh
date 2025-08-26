@@ -3,8 +3,6 @@
 # Usage
 # docker compose exec -T site bash < site/install_assets.sh
 
-cd /opt/online-judge || exit
-
 echo "> Collect static"
 python3 manage.py collectstatic --noinput
 

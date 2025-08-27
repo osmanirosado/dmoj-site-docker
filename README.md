@@ -29,9 +29,9 @@ Next, build the images:
 docker compose build
 ```
 
-Change owner to shared volumes
+Change ownership to application directories
 ```sh
-docker compose run --rm owner
+docker compose run --rm site /usr/local/bin/change-owner.sh
 ```
 
 Start up the site, so you can generate the static files and perform the initial migrations:

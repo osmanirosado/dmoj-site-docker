@@ -49,6 +49,11 @@ USER dmoj
 
 FROM base AS site
 
+USER root
+
+COPY change-owner.sh /usr/local/bin/change-owner.sh
+RUN chmod +x /usr/local/bin/change-owner.sh
+
 EXPOSE 8000
 
 CMD uwsgi --ini /opt/online-judge/uwsgi.ini

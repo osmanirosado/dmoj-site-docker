@@ -20,7 +20,7 @@ services:
     build:
       context: texoid
       dockerfile: Dockerfile
-    image: dmoj-texoid
+    image: dmoj-texoid:${IMAGE_TAG:-latest}
     init: true
     restart: unless-stopped
     networks:
@@ -29,7 +29,7 @@ services:
     build:
       context: pdfoid
       dockerfile: Dockerfile
-    image: dmoj-pdfoid
+    image: dmoj-pdfoid:${IMAGE_TAG:-latest}
     init: true
     restart: unless-stopped
     networks:
@@ -40,7 +40,7 @@ services:
     build:
       context: mathoid
       dockerfile: Dockerfile
-    image: dmoj-mathoid
+    image: dmoj-mathoid:${IMAGE_TAG:-latest}
     init: true
     restart: unless-stopped
     networks:
@@ -50,7 +50,7 @@ services:
       context: site
       dockerfile: Dockerfile
       target: site
-    image: dmoj-site
+    image: dmoj-site:${IMAGE_TAG:-latest}
     init: true
     restart: unless-stopped
     volumes:
@@ -77,7 +77,7 @@ services:
       context: site
       dockerfile: Dockerfile
       target: celery
-    image: dmoj-celery
+    image: dmoj-celery:${IMAGE_TAG:-latest}
     init: true
     restart: unless-stopped
     volumes:
@@ -98,7 +98,7 @@ services:
       context: site
       dockerfile: Dockerfile
       target: bridged
-    image: dmoj-bridged
+    image: dmoj-bridged:${IMAGE_TAG:-latest}
     init: true
     restart: unless-stopped
     volumes:
@@ -122,7 +122,7 @@ services:
       context: site
       dockerfile: Dockerfile
       target: wsevent
-    image: dmoj-wsevent
+    image: dmoj-wsevent:${IMAGE_TAG:-latest}
     init: true
     restart: unless-stopped
     networks:

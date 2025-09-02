@@ -29,6 +29,8 @@ services:
     build:
       context: pdfoid
       dockerfile: Dockerfile
+      args:
+        - STORAGE_GOOGLE_APIS=${STORAGE_GOOGLE_APIS:-storage.googleapis.com}
     image: dmoj-pdfoid:${IMAGE_TAG:-latest}
     init: true
     restart: unless-stopped

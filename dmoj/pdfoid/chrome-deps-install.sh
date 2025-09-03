@@ -8,6 +8,7 @@
 apt-get update
 
 while read pkg; do
+  echo "Install or satisfy package ${pkg}"
   apt-get satisfy -y --no-install-recommends "${pkg}" || exit 3;
 done < "$1";
 

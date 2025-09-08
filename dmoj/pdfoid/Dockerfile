@@ -62,4 +62,4 @@ ENV EXIFTOOL_PATH=/usr/bin/exiftool
 
 EXPOSE 8887
 
-CMD python3 pdfoid --address=pdfoid --port=8887
+CMD ["python3", "pdfoid", "--address=pdfoid", "--port=8887"]

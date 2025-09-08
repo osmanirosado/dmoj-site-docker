@@ -14,4 +14,4 @@ EXPOSE 8888
 
 WORKDIR /opt/mathoid/node_modules/mathoid
 
-CMD node /opt/mathoid/node_modules/mathoid/server.js
+CMD ["node", "/opt/mathoid/node_modules/mathoid/server.js"]

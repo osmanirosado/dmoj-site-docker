@@ -58,18 +58,18 @@ RUN chmod +x /usr/local/bin/change-owner.sh
 
 EXPOSE 8000
 
-CMD uwsgi --ini /opt/online-judge/uwsgi.ini
+CMD ["uwsgi", "--ini", "/opt/online-judge/uwsgi.ini"]
 
 FROM base AS celery
 
-CMD celery -A dmoj_celery worker -l info --concurrency=2
+CMD ["celery", "-A", "dmoj_celery", "worker", "-l", "info", "--concurrency=2"]
 
 FROM base AS bridged
 
 EXPOSE 9999
 EXPOSE 9998
 
-CMD python3 /opt/online-judge/manage.py runbridged
+CMD ["python3", "/opt/online-judge/manage.py", "runbridged"]
 
 FROM node:22-slim AS wsevent
 
@@ -91,4 +91,4 @@ EXPOSE 15100
 EXPOSE 15101
 EXPOSE 15102
 
-CMD node /opt/online-judge/websocket/daemon.js
+CMD ["node", "/opt/online-judge/websocket/daemon.js"]

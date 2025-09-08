@@ -20,4 +20,4 @@ USER app
 
 EXPOSE 8886
 
-CMD python3 texoid --address=texoid --port=8886
+CMD ["python3", "texoid", "--address=texoid", "--port=8886"]

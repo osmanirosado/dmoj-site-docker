@@ -52,6 +52,8 @@ services:
       context: site
       dockerfile: Dockerfile
       target: site
+      args:
+        - ONLINE_JUDGE_REPO=${ONLINE_JUDGE_REPO:-https://github.com/DMOJ/online-judge.git}
     image: dmoj-site:${IMAGE_TAG:-latest}
     init: true
     restart: unless-stopped
@@ -79,6 +81,8 @@ services:
       context: site
       dockerfile: Dockerfile
       target: celery
+      args:
+        - ONLINE_JUDGE_REPO=${ONLINE_JUDGE_REPO:-https://github.com/DMOJ/online-judge.git}
     image: dmoj-celery:${IMAGE_TAG:-latest}
     init: true
     restart: unless-stopped
@@ -100,6 +104,8 @@ services:
       context: site
       dockerfile: Dockerfile
       target: bridged
+      args:
+        - ONLINE_JUDGE_REPO=${ONLINE_JUDGE_REPO:-https://github.com/DMOJ/online-judge.git}
     image: dmoj-bridged:${IMAGE_TAG:-latest}
     init: true
     restart: unless-stopped
@@ -124,6 +130,8 @@ services:
       context: site
       dockerfile: Dockerfile
       target: wsevent
+      args:
+        - ONLINE_JUDGE_REPO=${ONLINE_JUDGE_REPO:-https://github.com/DMOJ/online-judge.git}
     image: dmoj-wsevent:${IMAGE_TAG:-latest}
     init: true
     restart: unless-stopped

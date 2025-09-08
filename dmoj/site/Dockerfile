@@ -1,12 +1,14 @@
 FROM node:22-slim AS maker
 
+ARG ONLINE_JUDGE_REPO=https://github.com/DMOJ/online-judge.git
+
 WORKDIR /home
 
 # node modules
 RUN npm install -g sass postcss-cli postcss autoprefixer
 
 # online judge code and judge assets
-ADD https://github.com/DMOJ/online-judge.git /home/online-judge
+ADD "$ONLINE_JUDGE_REPO" /home/online-judge
 
 WORKDIR /home/online-judge
 

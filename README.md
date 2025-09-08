@@ -108,6 +108,18 @@ Command to restore the `dmoj` database
 docker compose exec -T db sh -c 'mariadb -u root -p"$MARIADB_ROOT_PASSWORD" dmoj' < ~/backups/dmoj_db_backup_2025-08-25.sql
 ```
 
+## Fixtures
+
+Use the run command to mount fixtures inside a temporal container
+```sh
+docker compose run --rm -v ~/fixtures/:/mnt/fixtures site bash
+```
+
+Then execute a command to load data from a fixture
+```sh
+python manage.py loaddata /mnt/fixtures/judge-group-1.yaml 
+```
+
 ## Updating The Site
 Updating various sections of the site requires different images to be rebuilt.
 

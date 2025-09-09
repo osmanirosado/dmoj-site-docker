@@ -31,7 +31,7 @@ docker compose build
 
 Change ownership to application directories
 ```sh
-docker compose run --rm site /usr/local/bin/change-owner.sh
+docker compose run --rm --no-deps site /usr/local/bin/change-owner.sh
 ```
 
 Start up the site, so you can generate the static files and perform the initial migrations:

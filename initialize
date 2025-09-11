@@ -24,6 +24,22 @@ copy_if_not_exits() {
   fi
 }
 
+create_if_not_exits() {
+  local real_file="$1"
+
+  if [[ "${real_file: -1}" == "/" ]]; then
+        real_file="${real_file%/}"
+  fi
+
+  if [ -e "$real_file" ]
+  then
+    echo "File exists: '$real_file'"
+  else
+    echo "Create file '$real_file'"
+    touch "$real_file"
+  fi
+}
+
 # uwsgi
 copy_if_not_exits example/uwsgi.ini dmoj/site/
 
@@ -38,5 +54,9 @@ copy_if_not_exits example/nginx.conf dmoj/nginx/
 
 # environment
 copy_if_not_exits example/env/db.env dmoj/env/
-copy_if_not_exits example/env/db-admin.env dmoj/env/
 copy_if_not_exits example/env/site.env dmoj/env/
+
+# secrets
+create_if_not_exits dmoj/secrets/db_password.txt
+create_if_not_exits dmoj/secrets/db_root_password.txt
+create_if_not_exits dmoj/secrets/django_secret_key.txt

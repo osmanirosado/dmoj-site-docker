@@ -8,7 +8,12 @@ services:
       - db:/var/lib/mysql/
     env_file:
       - env/db.env
-      - env/db-admin.env
+    environment:
+      - MARIADB_PASSWORD_FILE=/run/secrets/db_password
+      - MARIADB_ROOT_PASSWORD_FILE=/run/secrets/db_root_password
+    secrets:
+      - db_password
+      - db_root_password
     networks:
       - db
   redis:
@@ -69,6 +74,12 @@ services:
     env_file:
       - env/db.env
       - env/site.env
+    environment:
+      - MARIADB_PASSWORD_FILE=/run/secrets/db_password
+      - DJANGO_SECRET_KEY_FILE=/run/secrets/django_secret_key
+    secrets:
+      - db_password
+      - django_secret_key
     networks:
       - site
       - nginx
@@ -93,6 +104,12 @@ services:
     env_file:
       - env/db.env
       - env/site.env
+    environment:
+      - MARIADB_PASSWORD_FILE=/run/secrets/db_password
+      - DJANGO_SECRET_KEY_FILE=/run/secrets/django_secret_key
+    secrets:
+      - db_password
+      - django_secret_key
     networks:
       - site
       - db
@@ -116,6 +133,12 @@ services:
     env_file:
       - env/db.env
       - env/site.env
+    environment:
+      - MARIADB_PASSWORD_FILE=/run/secrets/db_password
+      - DJANGO_SECRET_KEY_FILE=/run/secrets/django_secret_key
+    secrets:
+      - db_password
+      - django_secret_key
     networks:
       - site
       - nginx
@@ -163,6 +186,14 @@ networks:
   site:
   db:
   nginx:
+
+secrets:
+  db_password:
+    file: secrets/db_password.txt
+  db_root_password:
+    file: secrets/db_root_password.txt
+  django_secret_key:
+    file: secrets/django_secret_key.txt
 
 volumes:
   db:

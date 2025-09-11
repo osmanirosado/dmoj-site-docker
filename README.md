@@ -22,7 +22,7 @@ cd dmoj
 From now on, it is assumed you are in the `dmoj` directory.
 
 Configure the environment variables in the files copied to `dmoj/env` from `example/env`.
-In particular, set the MariaDB passwords in `db.env` and `db-admin.env`, and the host and secret key in `site.env`.
+Define the secrets variables in the files created in `secrets/`.
 
 Next, build the images:
 ```sh
@@ -88,24 +88,24 @@ docker compose exec db bash
 
 Maria DB access as root
 ```sh
-mariadb -u root -p"$MARIADB_ROOT_PASSWORD"
+mariadb -u root -p"$(</run/secrets/db_root_password)"
 ```
 
 Maria DB access to default database
 ```sh
-mariadb -u "$MARIADB_USER" -p"$MARIADB_PASSWORD" "$MARIADB_DATABASE"
+mariadb -u "$MARIADB_USER" -p"$(</run/secrets/db_password)" "$MARIADB_DATABASE"
 ```
 
 ### Backup
 
 Command to back up the `dmoj` database
 ```sh
-docker compose exec -T db sh -c 'mariadb-dump -u root -p"$MARIADB_ROOT_PASSWORD" --routines --triggers dmoj' > ~/backups/dmoj_db_backup_2025-08-25.sql
+docker compose exec -T db sh -c 'mariadb-dump -u root -p"$(</run/secrets/db_root_password)" --routines --triggers dmoj' > ~/backups/dmoj_db_backup_2025-08-25.sql
 ```
 
 Command to restore the `dmoj` database
 ```sh
-docker compose exec -T db sh -c 'mariadb -u root -p"$MARIADB_ROOT_PASSWORD" dmoj' < ~/backups/dmoj_db_backup_2025-08-25.sql
+docker compose exec -T db sh -c 'mariadb -u root -p"$(</run/secrets/db_root_password)" dmoj' < ~/backups/dmoj_db_backup_2025-08-25.sql
 ```
 
 ## Fixtures

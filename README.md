@@ -24,6 +24,11 @@ From now on, it is assumed you are in the `dmoj` directory.
 Configure the environment variables in the files copied to `dmoj/env` from `example/env`.
 Define the secrets variables in the files created in `secrets/`.
 
+Pull images ignoring those that can be build
+```sh
+docker compose pull --ignore-buildable
+```
+
 Next, build the images:
 ```sh
 docker compose build

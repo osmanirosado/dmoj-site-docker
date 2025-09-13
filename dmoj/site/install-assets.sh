@@ -4,6 +4,11 @@
 # bash /usr/local/bin/install-assets.sh
 # docker compose exec -T -u root site /usr/local/bin/install-assets.sh
 
+if [ "$EUID" -ne 0 ]; then
+  echo "This script must be run as root." >&2
+  exit 1
+fi
+
 assets_dir=/var/opt/lib/dmoj/assets/
 
 echo "> Collect static"

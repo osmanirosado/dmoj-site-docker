@@ -5,6 +5,11 @@
 # docker compose exec -u root site /usr/local/bin/change-owner.sh
 # docker compose run --rm --no-deps -u root site /usr/local/bin/change-owner.sh
 
+if [ "$EUID" -ne 0 ]; then
+  echo "This script must be run as root." >&2
+  exit 1
+fi
+
 # Define the list of target paths
 paths=(
     "/var/log/dmoj/"

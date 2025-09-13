@@ -56,8 +56,8 @@ USER root
 COPY change-owner.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/change-owner.sh
 
-COPY install-assets.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/install-assets.sh
+COPY dmoj-install-assets /usr/local/bin/
+RUN chmod +x /usr/local/bin/dmoj-install-assets
 
 USER dmoj
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Usage
-# bash /usr/local/bin/install-assets.sh
-# docker compose exec -T -u root site /usr/local/bin/install-assets.sh
+# bash /usr/local/bin/dmoj-install-assets
+# docker compose exec -T -u root site /usr/local/bin/dmoj-install-assets
 
 if [ "$EUID" -ne 0 ]; then
   echo "This script must be run as root." >&2

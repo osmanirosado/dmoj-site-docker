@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Usage
-# docker compose exec -T site bash < site/install-assets.sh
+# docker compose exec -T -u dmoj site bash < site/install-assets.sh
 
 echo "> Collect static"
 python3 manage.py collectstatic --noinput

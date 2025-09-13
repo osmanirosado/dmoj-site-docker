@@ -46,7 +46,7 @@ docker compose up -d site
 
 Start a shell inside the site container
 ```sh
-docker compose exec site bash
+docker compose exec -u dmoj site bash
 ```
 
 You will need to generate the static files:

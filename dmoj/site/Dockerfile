@@ -53,8 +53,8 @@ FROM base AS site
 
 USER root
 
-COPY change-owner.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/change-owner.sh
+COPY dmoj-change-owner /usr/local/bin/
+RUN chmod +x /usr/local/bin/dmoj-change-owner
 
 COPY dmoj-install-assets /usr/local/bin/
 RUN chmod +x /usr/local/bin/dmoj-install-assets

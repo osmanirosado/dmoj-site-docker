@@ -74,7 +74,7 @@ python3 manage.py loaddata demo # optional
 
 Change ownership to application directories
 ```sh
-bash /usr/local/bin/change-owner.sh
+bash /usr/local/bin/dmoj-change-owner
 ```
 
 ## Usage

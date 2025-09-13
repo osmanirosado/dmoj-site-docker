@@ -34,11 +34,6 @@ Next, build the images:
 docker compose build
 ```
 
-Change ownership to application directories
-```sh
-docker compose run --rm --no-deps site /usr/local/bin/change-owner.sh
-```
-
 Start up the site, so you can generate the static files and perform the initial migrations:
 ```sh
 docker compose up -d site
@@ -46,7 +41,7 @@ docker compose up -d site
 
 Start a shell inside the site container
 ```sh
-docker compose exec -u dmoj site bash
+docker compose exec -u root site bash
 ```
 
 You will need to generate the static files:
@@ -75,6 +70,11 @@ They can be loaded with the following commands:
 python3 manage.py loaddata navbar
 python3 manage.py loaddata language_small
 python3 manage.py loaddata demo # optional
+```
+
+Change ownership to application directories
+```sh
+bash /usr/local/bin/change-owner.sh
 ```
 
 ## Usage

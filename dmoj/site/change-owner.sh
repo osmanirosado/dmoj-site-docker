@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Usage
+# bash /usr/local/bin/change-owner.sh
+# docker compose exec -u root site /usr/local/bin/change-owner.sh
+# docker compose run --rm --no-deps -u root site /usr/local/bin/change-owner.sh
+
 # Define the list of target paths
 paths=(
     "/var/log/dmoj/"

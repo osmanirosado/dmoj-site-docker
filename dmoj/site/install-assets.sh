@@ -15,3 +15,6 @@ python3 manage.py compilejsi18n
 
 echo "> Copy additional assets"
 cp 502.html logo.png robots.txt /var/opt/lib/dmoj/assets/
+
+echo "> Update ownership"
+bash /usr/local/bin/change-owner.sh

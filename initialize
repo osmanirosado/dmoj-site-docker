@@ -50,7 +50,7 @@ copy_if_not_exits example/local_settings.py dmoj/site/
 copy_if_not_exits example/config.js dmoj/site/
 
 # nginx
-copy_if_not_exits example/nginx.conf dmoj/nginx/
+copy_if_not_exits example/nginx/dmoj.conf dmoj/nginx/
 
 # environment
 copy_if_not_exits example/env/db.env dmoj/env/

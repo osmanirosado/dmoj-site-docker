@@ -19,4 +19,4 @@ COPY --from=temporal /home/wikipedia/downloads/ /usr/share/nginx/wikipedia/
 
 RUN rm /etc/nginx/conf.d/default.conf
 
-COPY nginx.conf /etc/nginx/conf.d/nginx.conf
+COPY dmoj.conf /etc/nginx/conf.d/

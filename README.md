@@ -31,7 +31,7 @@ docker compose pull --ignore-buildable
 
 Next, build the images:
 ```sh
-docker compose build
+docker compose --progress=plain build
 ```
 
 Start up the site, so you can generate the static files and perform the initial migrations:

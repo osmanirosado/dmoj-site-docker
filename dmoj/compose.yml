@@ -176,6 +176,7 @@ services:
       - mathoid_cache:/var/cache/dmoj/mathoid/:ro
       - texoid_cache:/var/cache/dmoj/texoid/:ro
       - media:/var/opt/lib/dmoj/media/:ro
+      - resources:/var/opt/lib/dmoj/resources/
     networks:
       - nginx
     depends_on:
@@ -199,6 +200,7 @@ volumes:
   db:
   assets:
   media:
+  resources:
   problems:
   log:
   pdf_cache:

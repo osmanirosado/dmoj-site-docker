@@ -50,6 +50,9 @@ WORKDIR /opt/online-judge
 
 USER dmoj
 
+# check
+RUN python3 manage.py check
+
 FROM base AS site
 
 USER root

@@ -34,18 +34,19 @@ RUN pip3 install --no-cache-dir -r /root/requirements.txt
 # addicional packages
 RUN pip3 install --no-cache-dir pymysql mysqlclient django-redis redis websocket-client uwsgi
 
+# dmoj user
+RUN useradd --uid 1000 --shell=/usr/sbin/nologin dmoj
+
 # code
-COPY --from=maker /home/online-judge /opt/online-judge
+COPY --chown=dmoj --from=maker /home/online-judge /opt/online-judge
 
 # uwsgi config
-COPY uwsgi.ini /opt/online-judge
+COPY --chown=dmoj uwsgi.ini /opt/online-judge
 
 # site settings
-COPY local_settings.py /opt/online-judge/dmoj
+COPY --chown=dmoj local_settings.py /opt/online-judge/dmoj
 
 WORKDIR /opt/online-judge
-
-RUN useradd --uid 1000 --shell=/usr/sbin/nologin dmoj
 
 USER dmoj
 

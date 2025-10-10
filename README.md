@@ -49,9 +49,6 @@ You will need to generate the static files:
 # static
 python3 manage.py collectstatic
 
-# messages
-python3 manage.py compilemessages
-
 # jsi18n
 python3 manage.py compilejsi18n
 

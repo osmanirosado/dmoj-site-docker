@@ -14,9 +14,6 @@ assets_dir=/var/opt/lib/dmoj/assets/
 echo "> Collect static"
 python3 manage.py collectstatic --noinput
 
-echo "> Compile messages"
-python3 manage.py compilemessages
-
 echo "> Compile jsi18n"
 python3 manage.py compilejsi18n
 

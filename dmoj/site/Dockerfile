@@ -46,6 +46,9 @@ COPY --chown=dmoj uwsgi.ini /opt/online-judge
 # site settings
 COPY --chown=dmoj local_settings.py /opt/online-judge/dmoj
 
+# log directory
+RUN mkdir "/var/log/dmoj/" && chown dmoj:dmoj "/var/log/dmoj/"
+
 WORKDIR /opt/online-judge
 
 USER dmoj

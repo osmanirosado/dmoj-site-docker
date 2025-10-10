@@ -39,9 +39,14 @@ Start up the site, so you can generate the static files and perform the initial 
 docker compose up -d site
 ```
 
+Change ownership to application directories
+```sh
+docker compose exec -T -u root site dmoj-change-owner
+```
+
 Start a shell inside the site container
 ```sh
-docker compose exec -u root site bash
+docker compose exec site bash
 ```
 
 You will need to generate the static files:
@@ -67,11 +72,6 @@ They can be loaded with the following commands:
 python3 manage.py loaddata navbar
 python3 manage.py loaddata language_small
 python3 manage.py loaddata demo # optional
-```
-
-Change ownership to application directories
-```sh
-bash dmoj-change-owner
 ```
 
 ## Usage

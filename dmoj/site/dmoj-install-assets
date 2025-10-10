@@ -2,12 +2,7 @@
 
 # Usage
 # bash dmoj-install-assets
-# docker compose exec -T -u root site dmoj-install-assets
-
-if [ "$EUID" -ne 0 ]; then
-  echo "This script must be run as root." >&2
-  exit 1
-fi
+# docker compose exec -T site dmoj-install-assets
 
 assets_dir=/var/opt/lib/dmoj/assets/
 
@@ -19,6 +14,3 @@ python3 manage.py compilejsi18n
 
 echo "> Copy additional assets"
 cp 502.html logo.png robots.txt "$assets_dir"
-
-echo "> Update ownership of $assets_dir"
-chown -R dmoj:dmoj "$assets_dir"

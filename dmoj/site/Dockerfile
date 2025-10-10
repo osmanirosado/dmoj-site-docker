@@ -56,6 +56,9 @@ USER dmoj
 # check
 RUN python3 manage.py check
 
+# compile messages
+RUN python3 manage.py compilemessages
+
 FROM base AS site
 
 USER root

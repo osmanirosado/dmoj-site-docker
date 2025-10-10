@@ -22,10 +22,10 @@ def get_value_from_file(file_path: str) -> str:
 SECRET_KEY = get_value_from_file(os.environ.get('DJANGO_SECRET_KEY_FILE', ''))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', '0') == '1'  # Change to False once you are done with runserver testing.
+DEBUG = False  # Change to False once you are done with runserver testing.
 
 # Host name
-HOST = os.environ.get('HOST', 'dmoj.ca')
+HOST = 'dmoj.ca'
 
 # Uncomment and set to the domain names this site is intended to serve.
 # You must do this once you set DEBUG to False.

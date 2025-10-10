@@ -54,7 +54,6 @@ copy_if_not_exits example/nginx/dmoj.conf dmoj/nginx/
 
 # environment
 copy_if_not_exits example/env/db.env dmoj/env/
-copy_if_not_exits example/env/site.env dmoj/env/
 
 # secrets
 create_if_not_exits dmoj/secrets/db_password.txt

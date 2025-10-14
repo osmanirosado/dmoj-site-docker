@@ -81,18 +81,6 @@ Start up all services
 docker compose up -d
 ```
 
-## Problem data
-
-Use the run command to mount tmp inside a temporal container
-```sh
-docker compose run --rm -v ~/tmp/:/mnt/tmp/ -w /mnt/tmp/  site bash
-```
-
-Then move problem data to `problems` directory
-```sh
-mv /mnt/tmp/ds3/ /var/opt/lib/dmoj/problems/ 
-```
-
 ## Updating The Site
 Updating various sections of the site requires different images to be rebuilt.
 

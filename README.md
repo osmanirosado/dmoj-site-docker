@@ -81,18 +81,6 @@ Start up all services
 docker compose up -d
 ```
 
-## Fixtures
-
-Use the run command to mount fixtures inside a temporal container
-```sh
-docker compose run --rm -v ~/fixtures/:/mnt/fixtures site bash
-```
-
-Then execute a command to load data from a fixture
-```sh
-python manage.py loaddata /mnt/fixtures/judge-group-1.yaml 
-```
-
 ## Problem data
 
 Use the run command to mount tmp inside a temporal container

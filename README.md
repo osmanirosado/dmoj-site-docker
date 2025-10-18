@@ -29,6 +29,21 @@ Pull images ignoring those that can be build
 docker compose pull --ignore-buildable
 ```
 
+Start up the database server
+```sh
+docker compose up -d db
+```
+
+Execute bash in the database container
+```sh
+docker compose exec db bash
+```
+
+Add time zone data to the database. A few pages require this.
+```sh
+mariadb-tzinfo-to-sql /usr/share/zoneinfo | mariadb -p"$(</run/secrets/db_root_password)" mysql
+```
+
 Next, build the images:
 ```sh
 docker compose --progress=plain build

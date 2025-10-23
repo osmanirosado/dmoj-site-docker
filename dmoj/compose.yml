@@ -3,6 +3,7 @@ name: dmoj
 services:
   db:
     image: mariadb:11.8
+    container_name: dmoj-mariadb
     restart: always
     volumes:
       - db:/var/lib/mysql/
@@ -18,6 +19,7 @@ services:
       - db
   redis:
     image: redis:alpine
+    container_name: dmoj-redis
     restart: always
     networks:
       - site
@@ -26,6 +28,7 @@ services:
       context: texoid
       dockerfile: Dockerfile
     image: dmoj-texoid:${IMAGE_TAG:-latest}
+    container_name: dmoj-texoid
     init: true
     restart: unless-stopped
     networks:
@@ -37,6 +40,7 @@ services:
       args:
         - STORAGE_GOOGLE_APIS=${STORAGE_GOOGLE_APIS:-https://storage.googleapis.com}
     image: dmoj-pdfoid:${IMAGE_TAG:-latest}
+    container_name: dmoj-pdfoid
     init: true
     restart: unless-stopped
     networks:
@@ -48,6 +52,7 @@ services:
       context: mathoid
       dockerfile: Dockerfile
     image: dmoj-mathoid:${IMAGE_TAG:-latest}
+    container_name: dmoj-mathoid
     init: true
     restart: unless-stopped
     networks:
@@ -60,6 +65,7 @@ services:
       args:
         - ONLINE_JUDGE_REPO=${ONLINE_JUDGE_REPO:-https://github.com/DMOJ/online-judge.git}
     image: dmoj-site:${IMAGE_TAG:-latest}
+    container_name: dmoj-site
     init: true
     restart: unless-stopped
     volumes:
@@ -94,6 +100,7 @@ services:
       args:
         - ONLINE_JUDGE_REPO=${ONLINE_JUDGE_REPO:-https://github.com/DMOJ/online-judge.git}
     image: dmoj-celery:${IMAGE_TAG:-latest}
+    container_name: dmoj-celery
     init: true
     restart: unless-stopped
     volumes:
@@ -122,6 +129,7 @@ services:
       args:
         - ONLINE_JUDGE_REPO=${ONLINE_JUDGE_REPO:-https://github.com/DMOJ/online-judge.git}
     image: dmoj-bridged:${IMAGE_TAG:-latest}
+    container_name: dmoj-bridged
     init: true
     restart: unless-stopped
     volumes:
@@ -153,6 +161,7 @@ services:
       args:
         - ONLINE_JUDGE_REPO=${ONLINE_JUDGE_REPO:-https://github.com/DMOJ/online-judge.git}
     image: dmoj-wsevent:${IMAGE_TAG:-latest}
+    container_name: dmoj-wsevent
     init: true
     restart: unless-stopped
     networks:
@@ -163,6 +172,7 @@ services:
       context: nginx
       dockerfile: Dockerfile
     image: dmoj-nginx
+    container_name: dmoj-nginx
     restart: always
     ports:
       - "127.0.0.1:8080:80"

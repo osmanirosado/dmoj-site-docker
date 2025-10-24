@@ -37,9 +37,6 @@ RUN pip3 install --no-cache-dir pymysql mysqlclient django-redis redis websocket
 # dmoj user
 RUN useradd --uid 1000 --shell=/usr/sbin/nologin dmoj
 
-# log directory
-RUN mkdir "/var/log/dmoj/" && chown dmoj:dmoj "/var/log/dmoj/"
-
 USER dmoj
 
 # code
@@ -48,8 +45,8 @@ COPY --chown=dmoj --from=maker /home/online-judge /opt/online-judge
 # uwsgi config
 COPY --chown=dmoj uwsgi.ini /opt/online-judge
 
-# site settings
-COPY --chown=dmoj local_settings.py /opt/online-judge/dmoj
+# sample local settings
+COPY --chown=dmoj sample_local_settings.py /opt/online-judge/dmoj/local_settings.py
 
 WORKDIR /opt/online-judge
 
@@ -58,6 +55,9 @@ RUN python3 manage.py check
 
 # compile messages
 RUN python3 manage.py compilemessages
+
+# actual local settings
+COPY --chown=dmoj local_settings.py /opt/online-judge/dmoj/local_settings.py
 
 FROM base AS site
 

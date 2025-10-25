@@ -71,9 +71,9 @@ services:
     volumes:
       - assets:/var/opt/lib/dmoj/assets/
       - data_cache:/var/cache/dmoj/data/
-      - pdfoid_cache:/var/cache/dmoj/pdf/
-      - mathoid_cache:/var/cache/dmoj/mathoid/
-      - texoid_cache:/var/cache/dmoj/texoid/
+      - pdf_oid_cache:/var/cache/dmoj/pdf/
+      - math_oid_cache:/var/cache/dmoj/mathoid/
+      - tex_oid_cache:/var/cache/dmoj/texoid/
       - media:/var/opt/lib/dmoj/media/
       - problems:/var/opt/lib/dmoj/problems/
       - log:/var/log/dmoj/
@@ -104,7 +104,7 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - pdfoid_cache:/var/cache/dmoj/pdf/
+      - pdf_oid_cache:/var/cache/dmoj/pdf/
       - data_cache:/var/cache/dmoj/data/
       - log:/var/log/dmoj/
     env_file:
@@ -133,7 +133,7 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - pdfoid_cache:/var/cache/dmoj/pdf/
+      - pdf_oid_cache:/var/cache/dmoj/pdf/
       - problems:/var/opt/lib/dmoj/problems/
       - log:/var/log/dmoj/
     env_file:
@@ -179,9 +179,9 @@ services:
     volumes:
       - assets:/var/opt/lib/dmoj/assets/:ro
       - data_cache:/var/cache/dmoj/data/:ro
-      - pdfoid_cache:/var/cache/dmoj/pdf/:ro
-      - mathoid_cache:/var/cache/dmoj/mathoid/:ro
-      - texoid_cache:/var/cache/dmoj/texoid/:ro
+      - pdf_oid_cache:/var/cache/dmoj/pdf/:ro
+      - math_oid_cache:/var/cache/dmoj/mathoid/:ro
+      - tex_oid_cache:/var/cache/dmoj/texoid/:ro
       - media:/var/opt/lib/dmoj/media/:ro
       - resources:/var/opt/lib/dmoj/resources/
     networks:
@@ -211,6 +211,6 @@ volumes:
   problems:
   log:
   data_cache:
-  pdfoid_cache:
-  mathoid_cache:
-  texoid_cache:
+  pdf_oid_cache:
+  math_oid_cache:
+  tex_oid_cache:

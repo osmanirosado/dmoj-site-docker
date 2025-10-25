@@ -70,7 +70,7 @@ services:
     restart: unless-stopped
     volumes:
       - assets:/var/opt/lib/dmoj/assets/
-      - pdf_cache:/var/cache/dmoj/pdf/
+      - pdfoid_cache:/var/cache/dmoj/pdf/
       - data_cache:/var/cache/dmoj/data/
       - mathoid_cache:/var/cache/dmoj/mathoid/
       - texoid_cache:/var/cache/dmoj/texoid/
@@ -104,7 +104,7 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - pdf_cache:/var/cache/dmoj/pdf/
+      - pdfoid_cache:/var/cache/dmoj/pdf/
       - data_cache:/var/cache/dmoj/data/
       - log:/var/log/dmoj/
     env_file:
@@ -133,7 +133,7 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - pdf_cache:/var/cache/dmoj/pdf/
+      - pdfoid_cache:/var/cache/dmoj/pdf/
       - problems:/var/opt/lib/dmoj/problems/
       - log:/var/log/dmoj/
     env_file:
@@ -178,7 +178,7 @@ services:
       - "127.0.0.1:8080:80"
     volumes:
       - assets:/var/opt/lib/dmoj/assets/:ro
-      - pdf_cache:/var/cache/dmoj/pdf/:ro
+      - pdfoid_cache:/var/cache/dmoj/pdf/:ro
       - data_cache:/var/cache/dmoj/data/:ro
       - mathoid_cache:/var/cache/dmoj/mathoid/:ro
       - texoid_cache:/var/cache/dmoj/texoid/:ro
@@ -210,7 +210,7 @@ volumes:
   resources:
   problems:
   log:
-  pdf_cache:
+  pdfoid_cache:
   data_cache:
   mathoid_cache:
   texoid_cache:

@@ -76,7 +76,7 @@ services:
       - tex_oid_cache:/var/cache/dmoj/texoid/
       - media:/var/opt/lib/dmoj/media/
       - problems:/var/opt/lib/dmoj/problems/
-      - log:/var/log/dmoj/
+      - log_data:/var/log/dmoj/
     env_file:
       - env/db.env
     environment:
@@ -106,7 +106,7 @@ services:
     volumes:
       - pdf_oid_cache:/var/cache/dmoj/pdf/
       - user_data_cache:/var/cache/dmoj/data/
-      - log:/var/log/dmoj/
+      - log_data:/var/log/dmoj/
     env_file:
       - env/db.env
     environment:
@@ -135,7 +135,7 @@ services:
     volumes:
       - pdf_oid_cache:/var/cache/dmoj/pdf/
       - problems:/var/opt/lib/dmoj/problems/
-      - log:/var/log/dmoj/
+      - log_data:/var/log/dmoj/
     env_file:
       - env/db.env
     environment:
@@ -209,7 +209,7 @@ volumes:
   media:
   resources:
   problems:
-  log:
+  log_data:
   user_data_cache:
   pdf_oid_cache:
   math_oid_cache:

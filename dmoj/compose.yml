@@ -69,7 +69,7 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - assets:/var/opt/lib/dmoj/assets/
+      - static_data:/var/opt/lib/dmoj/assets/
       - user_data_cache:/var/cache/dmoj/data/
       - pdf_oid_cache:/var/cache/dmoj/pdf/
       - math_oid_cache:/var/cache/dmoj/mathoid/
@@ -177,7 +177,7 @@ services:
     ports:
       - "127.0.0.1:8080:80"
     volumes:
-      - assets:/var/opt/lib/dmoj/assets/:ro
+      - static_data:/var/opt/lib/dmoj/assets/:ro
       - user_data_cache:/var/cache/dmoj/data/:ro
       - pdf_oid_cache:/var/cache/dmoj/pdf/:ro
       - math_oid_cache:/var/cache/dmoj/mathoid/:ro
@@ -205,7 +205,7 @@ secrets:
 
 volumes:
   db:
-  assets:
+  static_data:
   media:
   resources:
   problems:

@@ -7,7 +7,7 @@ services:
     restart: always
     volumes:
       - db:/var/lib/mysql/
-      - db_backup:/backup
+      - mariadb_backup:/backup
     env_file:
       - env/db.env
     environment:
@@ -206,7 +206,7 @@ secrets:
 
 volumes:
   db:
-  db_backup:
+  mariadb_backup:
   static_data:
   media:
   resources:

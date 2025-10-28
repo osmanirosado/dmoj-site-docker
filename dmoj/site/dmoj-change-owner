@@ -17,7 +17,7 @@ paths=(
     "/var/opt/lib/dmoj/media/"
     "/var/opt/lib/dmoj/problems/"
     "/var/cache/dmoj/data/"
-    "/var/cache/dmoj/pdf/"
+    "/var/cache/dmoj/pdfoid/"
     "/var/cache/dmoj/mathoid/"
     "/var/cache/dmoj/texoid/"
 )

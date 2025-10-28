@@ -242,7 +242,7 @@ TIMEZONE_MAP = f'//{HOST}/wikipedia/1024px-Blue_Marble_2002.png'
 DMOJ_PDF_PDFOID_URL = 'http://pdfoid:8887'
 
 # Directory to cache the PDF.
-DMOJ_PDF_PROBLEM_CACHE = '/var/cache/dmoj/pdf'
+DMOJ_PDF_PROBLEM_CACHE = '/var/cache/dmoj/pdfoid'
 
 # Path to use for nginx's X-Accel-Redirect feature.
 # Should be an internal location mapped to the above directory.

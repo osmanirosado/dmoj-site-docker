@@ -6,7 +6,7 @@ services:
     container_name: dmoj-mariadb
     restart: always
     volumes:
-      - db:/var/lib/mysql/
+      - mariadb_data:/var/lib/mysql/
       - mariadb_backup:/backup
     env_file:
       - env/db.env
@@ -205,7 +205,7 @@ secrets:
     file: secrets/django_secret_key.txt
 
 volumes:
-  db:
+  mariadb_data:
   mariadb_backup:
   static_data:
   media:

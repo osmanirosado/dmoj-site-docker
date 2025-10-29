@@ -254,7 +254,7 @@ DMOJ_USER_DATA_DOWNLOAD = True
 
 # Directory to cache user data downloads.
 # It is the administrator's responsibility to clean up old files.
-DMOJ_USER_DATA_CACHE = '/var/cache/dmoj/data'
+DMOJ_USER_DATA_CACHE = '/var/cache/dmoj/user_data'
 
 # Path to use for nginx's X-Accel-Redirect feature.
 # Should be an internal location mapped to the above directory.

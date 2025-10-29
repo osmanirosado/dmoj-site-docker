@@ -71,7 +71,7 @@ services:
     restart: unless-stopped
     volumes:
       - static_data:/var/opt/lib/dmoj/assets/
-      - user_data_cache:/var/cache/dmoj/data/
+      - user_data_cache:/var/cache/dmoj/user_data/
       - pdfoid_cache:/var/cache/dmoj/pdfoid/
       - mathoid_cache:/var/cache/dmoj/mathoid/
       - texoid_cache:/var/cache/dmoj/texoid/
@@ -106,7 +106,7 @@ services:
     restart: unless-stopped
     volumes:
       - pdfoid_cache:/var/cache/dmoj/pdfoid/
-      - user_data_cache:/var/cache/dmoj/data/
+      - user_data_cache:/var/cache/dmoj/user_data/
       - log_data:/var/log/dmoj/
     env_file:
       - env/db.env
@@ -179,7 +179,7 @@ services:
       - "127.0.0.1:8080:80"
     volumes:
       - static_data:/var/opt/lib/dmoj/assets/:ro
-      - user_data_cache:/var/cache/dmoj/data/:ro
+      - user_data_cache:/var/cache/dmoj/user_data/:ro
       - pdfoid_cache:/var/cache/dmoj/pdfoid/:ro
       - mathoid_cache:/var/cache/dmoj/mathoid/:ro
       - texoid_cache:/var/cache/dmoj/texoid/:ro

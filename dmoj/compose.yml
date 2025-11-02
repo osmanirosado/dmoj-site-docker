@@ -70,7 +70,7 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - static_data:/var/opt/lib/dmoj/assets/
+      - assets:/var/opt/lib/dmoj/assets/
       - user_data_cache:/var/cache/dmoj/user_data/
       - pdfoid_cache:/var/cache/dmoj/pdfoid/
       - mathoid_cache:/var/cache/dmoj/mathoid/
@@ -178,7 +178,7 @@ services:
     ports:
       - "127.0.0.1:8080:80"
     volumes:
-      - static_data:/var/opt/lib/dmoj/assets/:ro
+      - assets:/var/opt/lib/dmoj/assets/:ro
       - user_data_cache:/var/cache/dmoj/user_data/:ro
       - pdfoid_cache:/var/cache/dmoj/pdfoid/:ro
       - mathoid_cache:/var/cache/dmoj/mathoid/:ro
@@ -207,7 +207,7 @@ secrets:
 volumes:
   mariadb_data:
   mariadb_backup:
-  static_data:
+  assets:
   media:
   resources:
   problems:

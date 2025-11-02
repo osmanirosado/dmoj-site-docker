@@ -258,7 +258,7 @@ DMOJ_USER_DATA_CACHE = '/var/cache/dmoj/user_data'
 
 # Path to use for nginx's X-Accel-Redirect feature.
 # Should be an internal location mapped to the above directory.
-DMOJ_USER_DATA_INTERNAL = '/data-cache'
+DMOJ_USER_DATA_INTERNAL = '/user-data-cache'
 
 # How often a user can download their data.
 # DMOJ_USER_DATA_DOWNLOAD_RATELIMIT = datetime.timedelta(days=1)

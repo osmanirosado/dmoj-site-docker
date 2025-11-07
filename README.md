@@ -1,5 +1,7 @@
 # DMOJ Site Docker
 
+This repository is a derivative work of [DMOJ Docker](https://github.com/Ninjaclasher/dmoj-docker) repository.
+
 This repository contains the Docker files to run a clone of the [DMOJ site](https://github.com/DMOJ/online-judge).
 It configures some additional services, such as mathoid, pdfoid, and texoid.
 

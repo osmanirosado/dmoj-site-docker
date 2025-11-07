@@ -2,8 +2,11 @@
 
 This repository is a derivative work of [DMOJ Docker](https://github.com/Ninjaclasher/dmoj-docker) repository.
 
-This repository contains the Docker files to run a clone of the [DMOJ site](https://github.com/DMOJ/online-judge).
-It configures some additional services, such as mathoid, pdfoid, and texoid.
+This Docker Compose stack facilitates the deployment of a clone of the [DMOJ site](https://github.com/DMOJ/online-judge).
+It not only replicates the core functionalities of the DMOJ platform but also incorporates additional services.
+The stack includes **Mathoid**, **PDFoid**, and **Texoid**, which are integral for rendering mathematical expressions,
+generating PDF documents, and processing LaTeX, respectively. This setup ensures a robust and feature-rich environment 
+suitable for competitive programming and online judging platforms.
 
 ## Installation
 

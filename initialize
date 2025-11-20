@@ -17,7 +17,7 @@ copy_if_not_exits() {
 
   if [ -e "$real_file" ]
   then
-    echo "Config file exists: '$real_file'"
+    echo "File exists: '$real_file'"
   else
     echo "Copy config file '$sample_file' to '$real_file'"
     cp "$sample_file" "$real_file"

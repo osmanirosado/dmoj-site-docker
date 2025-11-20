@@ -2,7 +2,10 @@ name: dmoj
 
 services:
   db:
-    image: mariadb:11.8
+    build:
+      context: mariadb
+      dockerfile: Dockerfile
+    image: dmoj-mariadb:${IMAGE_TAG:-latest}
     container_name: dmoj-mariadb
     restart: always
     volumes:

@@ -40,6 +40,9 @@ create_if_not_exits() {
   fi
 }
 
+# mariadb
+copy_if_not_exits example/mariadb/my.cnf dmoj/mariadb/conf/
+
 # uwsgi
 copy_if_not_exits example/uwsgi.ini dmoj/site/
 

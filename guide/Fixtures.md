@@ -5,12 +5,9 @@ Change working directory
 cd dmoj
 ```
 
-Use the run command to mount fixtures inside a temporal container
-```sh
-docker compose run --rm -v ~/fixtures/:/mnt/fixtures site bash
+Load data from a fixture
+```shell
+docker compose exec -T site python3 manage.py loaddata --format yaml - < ~/fixtures/judge-group-1.yaml
 ```
 
-Then execute a command to load data from a fixture
-```sh
-python3 manage.py loaddata /mnt/fixtures/judge-group-1.yaml 
-```
+The file format must be specified when reading from stdin.

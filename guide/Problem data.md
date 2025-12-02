@@ -1,16 +1,13 @@
 # Problem data
 
-Change working directory
-```sh
-cd dmoj
+Manually managed problem data
+
+Copy problem data to `problems` directory
+```shell
+docker cp ~/tmp/ds3/ dmoj-site:/var/opt/lib/dmoj/problems/
 ```
 
-Use the run command to mount `tmp` inside a temporal container
-```sh
-docker compose run --rm --no-deps -v ~/tmp/:/mnt/tmp/ -w /mnt/tmp/ site bash
-```
-
-Then move problem data to `problems` directory
-```sh
-mv /mnt/tmp/ds3/ /var/opt/lib/dmoj/problems/ 
+List the content of problem data directory
+```shell
+docker exec dmoj-site ls /var/opt/lib/dmoj/problems/ds3/
 ```

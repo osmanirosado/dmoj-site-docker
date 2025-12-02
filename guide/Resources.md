@@ -2,17 +2,12 @@
 
 Manually managed resources
 
-Change working directory
-```sh
-cd dmoj
+Copy data to `resources` directory
+```shell
+docker cp ~/tmp/oci25/ dmoj-site:/var/opt/lib/dmoj/resources/
 ```
 
-Use the run command to mount tmp inside a temporal container
-```sh
-docker compose run --rm -v ~/tmp/:/mnt/tmp/ -w /mnt/tmp/ nginx bash
-```
-
-Then move data to `resources` directory
-```sh
-mv /mnt/tmp/oci25/ /var/opt/lib/dmoj/resources/oci25/ 
+List the content of copied directory
+```shell
+docker exec dmoj-site ls /var/opt/lib/dmoj/resources/oci25/
 ```

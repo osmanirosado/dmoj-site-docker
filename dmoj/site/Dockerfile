@@ -56,9 +56,6 @@ RUN python3 manage.py check
 # compile messages
 RUN python3 manage.py compilemessages
 
-# actual local settings
-COPY --chown=dmoj local_settings.py /opt/online-judge/dmoj/local_settings.py
-
 FROM base AS site
 
 USER root

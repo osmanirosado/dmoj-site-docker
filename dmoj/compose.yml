@@ -184,6 +184,7 @@ services:
     ports:
       - "127.0.0.1:8080:80"
     volumes:
+      - ./nginx/dmoj.conf:/etc/nginx/conf.d/dmoj.conf:ro
       - assets:/var/opt/lib/dmoj/assets/:ro
       - user_data_cache:/var/cache/dmoj/user_data/:ro
       - pdfoid_cache:/var/cache/dmoj/pdfoid/:ro

@@ -8,14 +8,10 @@ WORKDIR /home/cdnjs/
 
 RUN wget --directory-prefix downloads --no-host-directories --force-directories --input-file urls.txt
 
-WORKDIR /home/wikipedia/
-
-RUN wget --directory-prefix downloads 'https://upload.wikimedia.org/wikipedia/commons/2/23/Blue_Marble_2002.png'
-
 FROM nginx:stable
 
+COPY wikipedia/Blue_Marble_2002.png /usr/share/nginx/wikipedia/
 COPY --from=temporal /home/cdnjs/downloads/ /usr/share/nginx/cdnjs/
-COPY --from=temporal /home/wikipedia/downloads/ /usr/share/nginx/wikipedia/
 
 RUN rm /etc/nginx/conf.d/default.conf
 

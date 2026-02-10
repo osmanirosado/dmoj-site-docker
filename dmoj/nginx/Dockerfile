@@ -10,7 +10,7 @@ RUN wget --directory-prefix downloads --no-host-directories --force-directories 
 
 WORKDIR /home/wikipedia/
 
-RUN wget --directory-prefix downloads 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Blue_Marble_2002.png/1024px-Blue_Marble_2002.png'
+RUN wget --directory-prefix downloads 'https://upload.wikimedia.org/wikipedia/commons/2/23/Blue_Marble_2002.png'
 
 FROM nginx:stable
 

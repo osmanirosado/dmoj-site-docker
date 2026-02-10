@@ -17,7 +17,7 @@ RUN unzip chrome-linux64.zip && mv chrome-linux64 chrome
 RUN wget "$STORAGE_GOOGLE_APIS/chrome-for-testing-public/$CHROME_RELEASE/linux64/chromedriver-linux64.zip"
 RUN unzip chromedriver-linux64.zip && mv chromedriver-linux64 chromedriver
 
-FROM python:3.11-slim
+FROM python:3.11.13-slim
 
 # chrome
 COPY --from=temporal /home/chrome/ /opt/chrome/

@@ -55,7 +55,7 @@ services:
     build:
       context: mathoid
       dockerfile: Dockerfile
-    image: dmoj-mathoid:${IMAGE_TAG:-latest}
+    image: dmoj-mathoid:${MATHOID_IMAGE_TAG:-latest}
     container_name: dmoj-mathoid
     init: true
     restart: unless-stopped

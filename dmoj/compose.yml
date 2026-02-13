@@ -68,7 +68,7 @@ services:
       target: site
       args:
         - ONLINE_JUDGE_REPO=${ONLINE_JUDGE_REPO:-https://github.com/DMOJ/online-judge.git}
-    image: dmoj-site:${IMAGE_TAG:-latest}
+    image: dmoj-site:${SITE_IMAGE_TAG:-latest}
     container_name: dmoj-site
     init: true
     restart: unless-stopped
@@ -104,7 +104,7 @@ services:
       target: celery
       args:
         - ONLINE_JUDGE_REPO=${ONLINE_JUDGE_REPO:-https://github.com/DMOJ/online-judge.git}
-    image: dmoj-celery:${IMAGE_TAG:-latest}
+    image: dmoj-celery:${SITE_IMAGE_TAG:-latest}
     container_name: dmoj-celery
     init: true
     restart: unless-stopped
@@ -134,7 +134,7 @@ services:
       target: bridged
       args:
         - ONLINE_JUDGE_REPO=${ONLINE_JUDGE_REPO:-https://github.com/DMOJ/online-judge.git}
-    image: dmoj-bridged:${IMAGE_TAG:-latest}
+    image: dmoj-bridged:${SITE_IMAGE_TAG:-latest}
     container_name: dmoj-bridged
     init: true
     restart: unless-stopped

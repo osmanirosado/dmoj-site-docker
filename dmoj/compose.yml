@@ -178,7 +178,7 @@ services:
     build:
       context: nginx
       dockerfile: Dockerfile
-    image: dmoj-nginx:${IMAGE_TAG:-latest}
+    image: dmoj-nginx:${NGINX_IMAGE_TAG:-latest}
     container_name: dmoj-nginx
     restart: always
     ports:

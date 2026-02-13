@@ -31,7 +31,7 @@ services:
     build:
       context: texoid
       dockerfile: Dockerfile
-    image: dmoj-texoid:${IMAGE_TAG:-latest}
+    image: dmoj-texoid:${TEXOID_IMAGE_TAG:-latest}
     container_name: dmoj-texoid
     init: true
     restart: unless-stopped

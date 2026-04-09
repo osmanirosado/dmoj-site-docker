@@ -1,3 +1,6 @@
 DMOJ and its components are distributed under the GNU Affero General Public License v3.0 (AGPL-3.0). 
 This repository contains deployment/configuration for DMOJ; 
 the original DMOJ source is available at https://github.com/DMOJ/online-judge.
+
+This repository is a derivative work based on dmoj-docker (https://github.com/Ninjaclasher/dmoj-docker).
+See the original repository for authorship, full source, and license details.

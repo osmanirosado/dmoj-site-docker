@@ -1,10 +1,9 @@
 # DMOJ Site Docker
 
-This Docker Compose stack facilitates the deployment of a clone of the [DMOJ site](https://github.com/DMOJ/online-judge).
-It not only replicates the core functionalities of the DMOJ platform but also incorporates additional services.
-The stack includes **Mathoid**, **PDFoid**, and **Texoid**, which are integral for rendering mathematical expressions,
-generating PDF documents, and processing LaTeX, respectively. This setup ensures a robust and feature-rich environment 
-suitable for competitive programming and online judging platforms.
+Docker Compose stack to facilitate the deployment of the [DMOJ Online Judge Site](https://github.com/DMOJ/online-judge).
+The stack also includes [Mathoid](https://gitlab.wikimedia.org/repos/mediawiki/services/mathoid),
+[PDFoid](https://github.com/DMOJ/pdfoid.git), and [Texoid](https://github.com/DMOJ/texoid.git), 
+for rendering mathematical expressions, generating PDF documents, and processing LaTeX, respectively.
 
 ## Installation
 

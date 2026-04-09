@@ -1,6 +1,14 @@
-DMOJ and its components are distributed under the GNU Affero General Public License v3.0 (AGPL-3.0). 
-This repository contains deployment/configuration for DMOJ; 
-the original DMOJ source is available at https://github.com/DMOJ/online-judge.
+DMOJ and its components are distributed under the GNU Affero General Public License v3.0 (AGPL-3.0).
+The DMOJ source is available at: https://github.com/DMOJ/online-judge
+
+The DMOJ component sources for PDFoid and Texoid are available at:
+https://github.com/DMOJ/pdfoid.git
+https://github.com/DMOJ/texoid.git
+
+Mathoid is distributed under the Apache License 2.0.
+The Mathoid source is available at: https://gitlab.wikimedia.org/repos/mediawiki/services/mathoid
 
 This repository is a derivative work based on dmoj-docker (https://github.com/Ninjaclasher/dmoj-docker).
 See the original repository for authorship, full source, and license details.
+
+This repository is distributed under the GNU Affero General Public License v3.0.

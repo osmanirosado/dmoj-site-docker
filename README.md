@@ -24,11 +24,16 @@ cd dmoj
 From now on, it is assumed you are in the `dmoj` directory.
 
 Configure the environment variables in the files copied to `dmoj/env` from `example/env`.
-Define the secrets variables in the files created in `secrets/`.
+Define the secrets variables in the files created in `dmoj/secrets/`.
 
 Pull images ignoring those that can be build
 ```sh
 docker compose pull --ignore-buildable
+```
+
+Build the images
+```sh
+docker compose --progress=plain build
 ```
 
 Start up the database server
@@ -41,17 +46,12 @@ Execute bash in the database container
 docker compose exec db bash
 ```
 
-Add time zone data to the database. A few pages require this.
+Add time zone data to the database
 ```sh
 mariadb-tzinfo-to-sql /usr/share/zoneinfo | mariadb -p"$(</run/secrets/db_root_password)" mysql
 ```
 
-Next, build the images:
-```sh
-docker compose --progress=plain build
-```
-
-Start up the site, so you can generate the static files and perform the initial migrations:
+Start up the site to generate the static files and perform the initial migrations
 ```sh
 docker compose up -d site
 ```
@@ -66,7 +66,7 @@ Start a shell inside the site container
 docker compose exec site bash
 ```
 
-You will need to generate the static files:
+Generate the static files
 ```sh
 # static
 python3 manage.py collectstatic
@@ -78,12 +78,12 @@ python3 manage.py compilejsi18n
 cp 502.html logo.png robots.txt /var/opt/lib/dmoj/assets/
 ```
 
-You will need to generate the schema for the database, since it is currently empty:
+Generate the schema for the database, since it is currently empty
 ```sh
 python3 manage.py migrate
 ```
 
-Finally, the DMOJ comes with fixtures so that the initial installation is not blank. 
+The DMOJ comes with fixtures so that the initial installation is not blank. 
 They can be loaded with the following commands:
 ```sh
 python3 manage.py loaddata navbar
@@ -98,18 +98,27 @@ Start up all services
 docker compose up -d
 ```
 
-## Updating The Site
+## Updating the Site
 Updating various sections of the site requires different images to be rebuilt.
 
-If any prerequisites were modified, you will need to rebuild most of the images:
+If any prerequisites were modified, rebuild most of the images
 ```sh
-docker compose up -d --build site celery bridged wsevent
+docker compose --progress=plain build site celery bridged wsevent
 ```
-If the static files are modified, you will need to generate the static files.
 
-If only the source code is modified, a restart is sufficient:
+Stop and remove containers ...
+```shell
+docker compose down
+```
+
+Create and start containers in background
 ```sh
-docker compose restart site celery bridged wsevent
+docker compose up -d
+```
+
+If the static files are modified, generate the static files
+```shell
+docker compose exec -T site dmoj-install-assets
 ```
 
 ## Multiple Nginx Instances

@@ -182,7 +182,7 @@ services:
     container_name: dmoj-nginx
     restart: always
     ports:
-      - "127.0.0.1:8080:80"
+      - "${NGINX_ADDRESS:-127.0.0.1}:8080:80"
     volumes:
       - ./nginx/dmoj.conf:/etc/nginx/conf.d/dmoj.conf:ro
       - assets:/var/opt/lib/dmoj/assets/:ro

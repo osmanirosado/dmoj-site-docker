@@ -106,14 +106,14 @@ If any prerequisites were modified, rebuild most of the images
 docker compose --progress=plain build site celery bridged wsevent
 ```
 
-Stop and remove containers ...
+Recreate containers to use the new images
 ```shell
-docker compose down
+docker compose up -d
 ```
 
-Create and start containers in background
+Restart nginx service
 ```sh
-docker compose up -d
+docker compose restart nginx
 ```
 
 If the static files are modified, generate the static files

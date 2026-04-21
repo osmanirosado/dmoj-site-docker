@@ -156,7 +156,7 @@ services:
       - nginx
       - db
     ports:
-      - "${BRIDGED_IP:-127.0.0.1}:9999:9999"
+      - "${BRIDGED_ADDRESS:-127.0.0.1}:9999:9999"
     depends_on:
       - db
       - redis

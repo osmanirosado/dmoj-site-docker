@@ -12,7 +12,7 @@ Installation instructions can be found on their respective websites.
 
 Clone the repository:
 ```sh
-git clone git@git.uclv.edu.cu:dmoj/dmoj-site-docker.git
+git clone https://github.com/osmanirosado/dmoj-site-docker.git
 cd dmoj-site-docker
 ```
 

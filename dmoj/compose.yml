@@ -167,7 +167,7 @@ services:
       target: wsevent
       args:
         - ONLINE_JUDGE_REPO=${ONLINE_JUDGE_REPO:-https://github.com/DMOJ/online-judge.git}
-    image: dmoj-wsevent:${WSEVENT_IMAGE_TAG:-latest}
+    image: dmoj-wsevent:${SITE_IMAGE_TAG:-latest}
     container_name: dmoj-wsevent
     init: true
     restart: unless-stopped

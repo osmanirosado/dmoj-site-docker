@@ -32,7 +32,7 @@ COPY --from=maker /home/online-judge/requirements.txt /root
 RUN pip3 install --no-cache-dir -r /root/requirements.txt
 
 # addicional packages
-RUN pip3 install --no-cache-dir pymysql mysqlclient django-redis redis websocket-client uwsgi
+RUN pip3 install --no-cache-dir pymysql mysqlclient 'django-redis<7' 'redis<7' websocket-client uwsgi
 
 # dmoj user
 RUN useradd --uid 1000 --shell=/usr/sbin/nologin dmoj

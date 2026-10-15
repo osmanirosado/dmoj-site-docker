@@ -53,7 +53,7 @@ WORKDIR /opt/online-judge
 # check
 RUN python3 manage.py check
 
-# compile messages
+# Compiles .po files created by makemessages to .mo files for use with the built-in gettext support.
 RUN python3 manage.py compilemessages
 
 FROM base AS site

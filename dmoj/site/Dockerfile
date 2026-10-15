@@ -27,6 +27,8 @@ apt-get autoremove -y
 apt-get clean
 EOF
 
+RUN pip install --no-cache-dir --upgrade pip
+
 # application requirements
 COPY --from=maker /home/online-judge/requirements.txt /root
 RUN pip3 install --no-cache-dir -r /root/requirements.txt

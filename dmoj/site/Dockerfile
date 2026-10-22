@@ -20,9 +20,9 @@ FROM python:3.11-slim AS base
 # system dependencies
 RUN <<EOF
 apt-get update
-apt-get install -y \
-        git gcc g++ make libxml2-dev libxslt1-dev zlib1g-dev gettext curl wget \
-        pkgconf debconf-utils mariadb-client libmariadb-dev
+apt-get upgrade -y
+apt-get install -y git gcc g++ make libxml2-dev libxslt1-dev zlib1g-dev gettext curl wget pkgconf debconf-utils \
+                   mariadb-client libmariadb-dev
 apt-get autoremove -y
 apt-get clean
 rm -rf /var/lib/apt/lists/*

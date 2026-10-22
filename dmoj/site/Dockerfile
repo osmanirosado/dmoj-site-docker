@@ -25,6 +25,7 @@ apt-get install -y \
         pkgconf debconf-utils mariadb-client libmariadb-dev
 apt-get autoremove -y
 apt-get clean
+rm -rf /var/lib/apt/lists/*
 EOF
 
 #RUN pip3 install --no-cache-dir --upgrade pip

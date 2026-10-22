@@ -36,9 +36,11 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # application requirements
 COPY --from=maker /home/online-judge/requirements.txt /root
 RUN pip3 install --no-cache-dir -r /root/requirements.txt
+RUN pip3 check
 
 # addicional packages
 RUN pip3 install --no-cache-dir pymysql mysqlclient 'django-redis<7' 'redis<7' websocket-client uwsgi
+RUN pip3 check
 
 # dmoj user
 RUN useradd --uid 1000 --shell=/usr/sbin/nologin dmoj

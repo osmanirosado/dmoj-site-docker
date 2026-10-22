@@ -19,6 +19,7 @@ FROM python:3.11-slim AS base
 
 # system dependencies
 RUN <<EOF
+export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get upgrade -y
 apt-get install -y git gcc g++ make libxml2-dev libxslt1-dev zlib1g-dev gettext curl wget pkgconf debconf-utils \

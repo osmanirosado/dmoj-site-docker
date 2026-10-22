@@ -67,6 +67,9 @@ RUN python3 manage.py check
 # Compiles .po files created by makemessages to .mo files for use with the built-in gettext support.
 RUN python3 manage.py compilemessages
 
+# Collect static
+RUN python3 manage.py collectstatic --noinput
+
 FROM base AS site
 
 USER root

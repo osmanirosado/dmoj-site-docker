@@ -27,7 +27,7 @@ apt-get autoremove -y
 apt-get clean
 EOF
 
-RUN pip3 install --no-cache-dir --upgrade pip
+#RUN pip3 install --no-cache-dir --upgrade pip
 
 ENV VIRTUAL_ENV=/opt/venv
 RUN python3 -m venv $VIRTUAL_ENV

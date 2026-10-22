@@ -70,6 +70,9 @@ RUN python3 manage.py compilemessages
 # Collect static
 RUN python3 manage.py collectstatic --noinput
 
+# Compile jsi18n
+RUN python3 manage.py compilejsi18n
+
 FROM base AS site
 
 USER root

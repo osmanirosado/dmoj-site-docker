@@ -22,7 +22,8 @@ RUN <<EOF
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get upgrade -y
-apt-get install -y git gcc g++ make libxml2-dev libxslt1-dev zlib1g-dev gettext curl wget pkgconf debconf-utils \
+apt-get install -y --no-install-recommends \
+                   git gcc g++ make libxml2-dev libxslt1-dev zlib1g-dev gettext curl wget pkgconf debconf-utils \
                    mariadb-client libmariadb-dev
 apt-get autoremove -y
 apt-get clean

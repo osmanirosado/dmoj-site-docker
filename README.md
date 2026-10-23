@@ -61,21 +61,14 @@ Change ownership to application directories
 docker compose exec -T -u root site dmoj-change-owner
 ```
 
+Generate the static files
+```sh
+docker compose exec -T site dmoj-install-assets
+```
+
 Start a shell inside the site container
 ```sh
 docker compose exec site bash
-```
-
-Generate the static files
-```sh
-# static
-python3 manage.py collectstatic
-
-# jsi18n
-python3 manage.py compilejsi18n
-
-# other assets
-cp 502.html logo.png robots.txt /var/opt/lib/dmoj/assets/
 ```
 
 Generate the schema for the database, since it is currently empty

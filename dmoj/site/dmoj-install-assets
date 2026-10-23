@@ -4,13 +4,18 @@
 # bash dmoj-install-assets
 # docker compose exec -T site dmoj-install-assets
 
-assets_dir=/var/opt/lib/dmoj/assets/
+assets_dir='/var/opt/lib/dmoj/assets'
+static_src_dir='/opt/online-judge/static'
+static_dst_dir="$assets_dir/static"
 
-echo "> Collect static"
-python3 manage.py collectstatic --noinput
+echo "> Clean static directory"
+echo "Target: $static_dst_dir"
+rm -r "$static_dst_dir"
 
-echo "> Compile jsi18n"
-python3 manage.py compilejsi18n
+echo "> Copy static files"
+echo "Source: $static_src_dir"
+echo "Target: $static_dst_dir"
+cp -r $static_src_dir $static_dst_dir
 
 echo "> Copy additional assets"
 cp 502.html logo.png robots.txt "$assets_dir"

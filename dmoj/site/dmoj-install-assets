@@ -5,24 +5,17 @@
 # docker compose exec -T site dmoj-install-assets
 
 assets_dir='/var/opt/lib/dmoj/assets'
-
 static_src_dir='/opt/online-judge/static'
 static_dst_dir="$assets_dir/static"
 
-files="502.html logo.png robots.txt"
-
 echo "> Clean static directory"
 echo "Target: $static_dst_dir"
-rm -rf "$static_dst_dir"
-echo
+rm -r "$static_dst_dir"
 
 echo "> Copy static files"
 echo "Source: $static_src_dir"
 echo "Target: $static_dst_dir"
 cp -r $static_src_dir $static_dst_dir
-echo
 
 echo "> Copy additional assets"
-echo "Target: $assets_dir"
-echo "Files: $files"
-cp $files "$assets_dir"
+cp 502.html logo.png robots.txt "$assets_dir"

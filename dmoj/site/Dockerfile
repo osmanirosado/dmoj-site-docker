@@ -30,11 +30,11 @@ apt-get clean
 rm -rf /var/lib/apt/lists/*
 EOF
 
-#RUN pip3 install --no-cache-dir --upgrade pip
-
 ENV VIRTUAL_ENV=/opt/venv
 RUN python3 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+RUN pip3 install --no-cache-dir --upgrade pip
 
 # application requirements
 COPY --from=maker /home/online-judge/requirements.txt /root
